@@ -1,63 +1,63 @@
 {
  "Files" : [
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/Divider.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/Divider.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/Dividerother.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/Dividerother.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/SEG_LUT.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/SEG_LUT.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/btn_deb.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/btn_deb.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/centerctrl.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/centerctrl.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter10.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/counter10.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter24.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/counter24.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter6.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/counter6.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/dht11.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/dht11.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/gowin_prom/ascii_pROM.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/gowin_prom/ascii_pROM.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_init.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/lcd_init.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_show_char.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/lcd_show_char.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_write.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/lcd_write.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/show_string_number_ctrl.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/show_string_number_ctrl.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
    "Type" : "verilog"
   }
  ],
@@ -65,7 +65,7 @@
 
  ],
  "LoopLimit" : 2000,
- "ResultFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/impl/temp/rtl_parser.result",
+ "ResultFile" : "F:/hardware_design/gowin_fpga_clock/impl/temp/rtl_parser.result",
  "Top" : "spi_st7735lcd",
  "VerilogStd" : "verilog_2001",
  "VhdlStd" : "vhdl_93"

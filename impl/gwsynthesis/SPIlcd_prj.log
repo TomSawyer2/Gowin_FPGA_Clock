@@ -1,48 +1,48 @@
 GowinSynthesis start
 Running parser ...
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Divider.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Dividerother.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\SEG_LUT.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\btn_deb.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\centerctrl.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter10.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter24.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter6.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\dht11.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\gowin_prom\ascii_pROM.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_init.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_show_char.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_write.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v'
-Analyzing Verilog file 'E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v'
-Compiling module 'spi_st7735lcd'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v":16)
-Compiling module 'btn_deb'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\btn_deb.v":1)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\btn_deb.v":9)
-Compiling module 'Divider(CLK_Freq=12000000)'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Divider.v":2)
-Compiling module 'counter10'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter10.v":2)
-Compiling module 'counter6'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter6.v":2)
-Compiling module 'counter24'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter24.v":2)
-Compiling module 'Dividerother'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Dividerother.v":2)
-Compiling module 'dht11'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\dht11.v":3)
-Compiling module 'lcd_init'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_init.v":7)
-Compiling module 'muxcontrol'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\centerctrl.v":6)
-Compiling module 'lcd_write'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_write.v":7)
-Compiling module 'show_string_number_ctrl'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":16)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":165)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":190)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":228)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":229)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":231)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":232)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":234)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":235)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":274)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":275)
-WARN  (EX3791) : Expression size 14 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":276)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":277)
-WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v":278)
-Compiling module 'lcd_show_char'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_show_char.v":6)
-Compiling module 'ascii_pROM'("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\gowin_prom\ascii_pROM.v":9)
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\Divider.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\Dividerother.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\SEG_LUT.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\btn_deb.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\centerctrl.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\counter10.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\counter24.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\counter6.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\dht11.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\gowin_prom\ascii_pROM.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\lcd_init.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\lcd_write.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v'
+Compiling module 'spi_st7735lcd'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":16)
+Compiling module 'btn_deb'("F:\hardware_design\gowin_fpga_clock\src\btn_deb.v":1)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 8("F:\hardware_design\gowin_fpga_clock\src\btn_deb.v":9)
+Compiling module 'Divider(CLK_Freq=12000000)'("F:\hardware_design\gowin_fpga_clock\src\Divider.v":2)
+Compiling module 'counter10'("F:\hardware_design\gowin_fpga_clock\src\counter10.v":2)
+Compiling module 'counter6'("F:\hardware_design\gowin_fpga_clock\src\counter6.v":2)
+Compiling module 'counter24'("F:\hardware_design\gowin_fpga_clock\src\counter24.v":2)
+Compiling module 'Dividerother'("F:\hardware_design\gowin_fpga_clock\src\Dividerother.v":2)
+Compiling module 'dht11'("F:\hardware_design\gowin_fpga_clock\src\dht11.v":3)
+Compiling module 'lcd_init'("F:\hardware_design\gowin_fpga_clock\src\lcd_init.v":7)
+Compiling module 'muxcontrol'("F:\hardware_design\gowin_fpga_clock\src\centerctrl.v":6)
+Compiling module 'lcd_write'("F:\hardware_design\gowin_fpga_clock\src\lcd_write.v":7)
+Compiling module 'show_string_number_ctrl'("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":16)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":165)
+WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":190)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":228)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":229)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":231)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":232)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":234)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":235)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":274)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":275)
+WARN  (EX3791) : Expression size 14 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":276)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":277)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":278)
+Compiling module 'lcd_show_char'("F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v":6)
+Compiling module 'ascii_pROM'("F:\hardware_design\gowin_fpga_clock\src\gowin_prom\ascii_pROM.v":9)
 NOTE  (EX0101) : Current top module is "spi_st7735lcd"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
@@ -60,9 +60,9 @@ Running technical mapping ...
 [75%] Tech-Mapping Phase 2 completed
 [80%] Tech-Mapping Phase 3 completed
 [90%] Tech-Mapping Phase 4 completed
-WARN  (NL0002) : The module "btn_deb" instantiated to "B0" is swept in optimizing("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v":69)
-WARN  (NL0002) : The module "btn_deb" instantiated to "B1" is swept in optimizing("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v":72)
-WARN  (NL0002) : The module "Dividerother" instantiated to "D0" is swept in optimizing("E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v":103)
-[95%] Generate netlist file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\gwsynthesis\SPIlcd_prj.vg" completed
-[100%] Generate report file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\gwsynthesis\SPIlcd_prj_syn.rpt.html" completed
+WARN  (NL0002) : The module "btn_deb" instantiated to "B0" is swept in optimizing("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":69)
+WARN  (NL0002) : The module "btn_deb" instantiated to "B1" is swept in optimizing("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":72)
+WARN  (NL0002) : The module "Dividerother" instantiated to "D0" is swept in optimizing("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":103)
+[95%] Generate netlist file "F:\hardware_design\gowin_fpga_clock\impl\gwsynthesis\SPIlcd_prj.vg" completed
+[100%] Generate report file "F:\hardware_design\gowin_fpga_clock\impl\gwsynthesis\SPIlcd_prj_syn.rpt.html" completed
 GowinSynthesis finish

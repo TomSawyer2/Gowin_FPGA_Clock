@@ -288,14 +288,12 @@ always@(posedge sys_clk or negedge sys_rst_n)
           default : 
                 //当cnt_s5_num大于14且为偶数时，传输颜色数据的高8位
                    if(cnt_s5_num >= 'd14 && cnt_s5_num[0] == 0) begin
-                     if(cnt_s5_num >= S5NUMHALF ) init_data <= {1'b1,CLRSCR2[15:8]};
-                     else init_data <= {1'b1,CLRSCR1[15:8]};
+                     init_data <= {1'b1,CLRSCR1[15:8]};
                    end
                 //当cnt_s5_num大于14且为奇数时，传输颜色数据的低8位
                    else begin
                      if(cnt_s5_num >= 'd14 && cnt_s5_num[0] == 1) begin
-                          if(cnt_s5_num >= S5NUMHALF ) init_data <= {1'b1,CLRSCR2[ 7:0]};
-                          else init_data <= {1'b1,CLRSCR1[ 7:0]};
+                          init_data <= {1'b1,CLRSCR1[ 7:0]};
                      end
                      else  init_data <= DATA_IDLE;
                    end

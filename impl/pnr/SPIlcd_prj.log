@@ -1,7 +1,7 @@
-Reading netlist file: "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\gwsynthesis\SPIlcd_prj.vg"
-Parsing netlist file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\gwsynthesis\SPIlcd_prj.vg" completed
+Reading netlist file: "F:\hardware_design\gowin_fpga_clock\impl\gwsynthesis\SPIlcd_prj.vg"
+Parsing netlist file "F:\hardware_design\gowin_fpga_clock\impl\gwsynthesis\SPIlcd_prj.vg" completed
 Processing netlist completed
-Reading constraint file: "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\LCDQig_pre1.cst"
+Reading constraint file: "F:\hardware_design\gowin_fpga_clock\src\LCDQig_pre1.cst"
 Physical Constraint parsed completed
 Running placement......
 [10%] Placement Phase 0 completed
@@ -20,10 +20,10 @@ Bitstream generation in progress......
 Bitstream generation completed
 Running power analysis......
 [100%] Power analysis completed
-Generate file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\pnr\SPIlcd_prj.power.html" completed
-Generate file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\pnr\SPIlcd_prj.pin.html" completed
-Generate file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\pnr\SPIlcd_prj.rpt.html" completed
-Generate file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\pnr\SPIlcd_prj.rpt.txt" completed
-Generate file "E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\pnr\SPIlcd_prj.tr.html" completed
-Fri May 26 08:50:49 2023
+Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.power.html" completed
+Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.pin.html" completed
+Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.rpt.html" completed
+Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.rpt.txt" completed
+Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.tr.html" completed
+Fri May 26 08:59:20 2023
 
