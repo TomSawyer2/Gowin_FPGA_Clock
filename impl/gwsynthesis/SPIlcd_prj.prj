@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE gowin-synthesis-project>
+<Project>
+    <Version>beta</Version>
+    <Device id="GW1N-1" package="QFN48" speed="6" partNumber="GW1N-LV1QN48C6/I5"/>
+    <FileList>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Divider.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\Dividerother.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\SEG_LUT.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\btn_deb.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\centerctrl.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter10.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter24.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\counter6.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\dht11.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\gowin_prom\ascii_pROM.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_init.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_show_char.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\lcd_write.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\show_string_number_ctrl.v" type="verilog"/>
+        <File path="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\src\spi_st7735lcd.v" type="verilog"/>
+    </FileList>
+    <OptionList>
+        <Option type="disable_insert_pad" value="0"/>
+        <Option type="dsp_balance" value="0"/>
+        <Option type="looplimit" value="2000"/>
+        <Option type="output_file" value="E:\LearningMeterials\HardwareCourseDesign\temp_humi_display\impl\gwsynthesis\SPIlcd_prj.vg"/>
+        <Option type="print_all_synthesis_warning" value="0"/>
+        <Option type="ram_rw_check" value="1"/>
+        <Option type="top_module" value="spi_st7735lcd"/>
+        <Option type="verilog_language" value="verilog-2001"/>
+        <Option type="vhdl_language" value="vhdl-1993"/>
+    </OptionList>
+</Project>

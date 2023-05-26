@@ -1,0 +1,150 @@
+[
+ {
+  "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/SEG_LUT.v",
+  "InstLine" : 2,
+  "InstName" : "SEG_LUT",
+  "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/SEG_LUT.v",
+  "ModuleLine" : 2,
+  "ModuleName" : "SEG_LUT"
+ },
+ {
+  "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+  "InstLine" : 16,
+  "InstName" : "spi_st7735lcd",
+  "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+  "ModuleLine" : 16,
+  "ModuleName" : "spi_st7735lcd",
+  "SubInsts" : [
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 67,
+    "InstName" : "B0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/btn_deb.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "btn_deb"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 70,
+    "InstName" : "B1",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/btn_deb.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "btn_deb"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 73,
+    "InstName" : "U0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/Divider.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "Divider"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 79,
+    "InstName" : "S0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter10.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "counter10"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 83,
+    "InstName" : "S1",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter6.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "counter6"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 87,
+    "InstName" : "M0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter10.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "counter10"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 91,
+    "InstName" : "M1",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter6.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "counter6"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 98,
+    "InstName" : "H0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/counter24.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "counter24"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 103,
+    "InstName" : "D0",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/Dividerother.v",
+    "ModuleLine" : 2,
+    "ModuleName" : "Dividerother"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 108,
+    "InstName" : "dht11_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/dht11.v",
+    "ModuleLine" : 3,
+    "ModuleName" : "dht11"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 135,
+    "InstName" : "lcd_init_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_init.v",
+    "ModuleLine" : 7,
+    "ModuleName" : "lcd_init"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 152,
+    "InstName" : "muxcontrol_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/centerctrl.v",
+    "ModuleLine" : 6,
+    "ModuleName" : "muxcontrol"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 167,
+    "InstName" : "lcd_write_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_write.v",
+    "ModuleLine" : 7,
+    "ModuleName" : "lcd_write"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 181,
+    "InstName" : "show_string_number_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/show_string_number_ctrl.v",
+    "ModuleLine" : 16,
+    "ModuleName" : "show_string_number_ctrl"
+   },
+   {
+    "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/spi_st7735lcd.v",
+    "InstLine" : 201,
+    "InstName" : "lcd_show_char_inst",
+    "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_show_char.v",
+    "ModuleLine" : 6,
+    "ModuleName" : "lcd_show_char",
+    "SubInsts" : [
+     {
+      "InstFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/lcd_show_char.v",
+      "InstLine" : 181,
+      "InstName" : "your_instance_name",
+      "ModuleFile" : "E:/LearningMeterials/HardwareCourseDesign/temp_humi_display/src/gowin_prom/ascii_pROM.v",
+      "ModuleLine" : 9,
+      "ModuleName" : "ascii_pROM"
+     }
+    ]
+   }
+  ]
+ }
+]
