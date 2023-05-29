@@ -17,6 +17,7 @@ module  spi_st7735lcd
 (
     input           xtal_clk      ,
     input           sys_rst_n     ,
+    input [3:0]     key_col       ,
     inout           dht11         ,
     
     output          lcd_rst       ,
@@ -25,7 +26,9 @@ module  spi_st7735lcd
     output          lcd_mosi      ,
     output          lcd_cs        ,
     output          lcd_led       ,
-    output          testled
+    output          testled       ,
+    output [3:0]    key_row       ,
+    output          BUZZER        
 );
 wire    [8:0]   data;   
 wire            en_write;
@@ -48,6 +51,25 @@ wire sys_clk;
 //Gowin_rPLL uPLL51M( .clkout(sys_clk), .clkin (xtal_clk) ); //测试速度时再开启。
 assign sys_clk = xtal_clk;
 
+// 键盘和蜂鸣器逻辑
+wire Value_en;
+wire [3:0] KEY_Value;
+KeyValue keyValue1(
+	.CLK(sys_clk),
+	.nRST(sys_rst_n),
+	.KEY_ROW(key_row),
+	.KEY_COL(key_col),
+	.KEY_Value(KEY_Value),
+	.Value_en(Value_en)
+);
+	
+Buzzer Buzzer1(
+	.CLK(sys_clk),
+	.nRST(sys_rst_n),
+	.BUZZER(BUZZER),
+    .Value_en(Value_en)
+);
+
 // 数字钟逻辑
 // 设置Adj_Min默认为低电平
 wire Adj_Min=1'b1;
@@ -59,17 +81,19 @@ wire nCR=1'b1;
 wire EN=1'b1;
 
 wire[7:0] Hour,Minute,Second;
+wire[7:0] newHour,newMinute,newSecond;
 wire MinL_EN,MinH_EN,Hour_EN;
 wire CP_1Hz;
 wire[2:0] sel; 
 wire flag0,flag1;
+wire [3:0] Status;
 
-btn_deb B0(.clk(sys_clk),
-           .btn_in(Adj_Min),
-           .btn_out(flag0));
-btn_deb B1(.clk(sys_clk),
-           .btn_in(Adj_Hour),
-           .btn_out(flag1));
+//btn_deb B0(.clk(sys_clk),
+//           .btn_in(Adj_Min),
+//           .btn_out(flag0));
+//btn_deb B1(.clk(sys_clk),
+//           .btn_in(Adj_Hour),
+//           .btn_out(flag1));
 Divider U0(.CLK_12(sys_clk),
            .nCR(nCR),
            .EN(EN),
@@ -99,8 +123,18 @@ counter24 H0(.cntH(Hour[7:4]),
              .cntL(Hour[3:0]),
              .nCR(nCR),
              .Hour_EN(Hour_EN),
+             .Status(Status),
+             .newHour(newHour),
+             .clk(sys_clk),
              .CP_1Hz(CP_1Hz));
 Dividerother D0(.CLK_12(sys_clk),.nCR(nCR),.sel(sel));
+
+ClockStatus clockstatus_inst (.clk(sys_clk),
+                              .rstn(sys_rst_n),
+                              .Value_en(Value_en),
+                              .KEY_Value(KEY_Value),
+                              .newHour(newHour),
+                              .Status(Status));
 
 // DHT11逻辑
 wire[7:0] temperature;
@@ -189,6 +223,7 @@ show_string_number_ctrl  show_string_number_inst
     .Second         (Second         ) ,
     .Temperature    (temperature    ) ,
     .Humidity       (humidity       ) ,
+    .Status         (Status         ) ,
 
     .en_size        (en_size        ) ,
     .show_char_flag (show_char_flag ) ,

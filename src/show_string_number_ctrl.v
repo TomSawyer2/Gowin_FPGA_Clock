@@ -24,6 +24,7 @@ module show_string_number_ctrl
     input       wire    [7:0]   Second              ,
     input       wire    [7:0]   Temperature         ,
     input       wire    [7:0]   Humidity            ,
+    input       wire    [3:0]   Status              ,
 
     output      wire            en_size             ,
     output      reg             show_char_flag      ,
@@ -81,6 +82,24 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
         decimal_hour_ones <= 4'h0;        // 复位时重置个位数为 0
         ascii_hour_tens <= 'd48;          // 复位时重置十位数的 ASCII 码值为 '0'
         ascii_hour_ones <= 'd48;          // 复位时重置个位数的 ASCII 码值为 '0'
+    end else if (Status == 4'd1) begin
+        inner_hour <= Hour;
+        // 将小时值转换为十进制数
+        decimal_hour_tens <= inner_hour[7:4];
+        decimal_hour_ones <= inner_hour[3:0];
+
+        // 将十位数和个位数的十进制值转换为 ASCII 码
+        ascii_hour_tens <= 'd95;    // 下划线_
+        ascii_hour_ones <= decimal_hour_ones + 'd48;    // '0' 的 ASCII 码值为 48
+    end else if (Status == 4'd2) begin
+        inner_hour <= Hour;
+        // 将小时值转换为十进制数
+        decimal_hour_tens <= inner_hour[7:4];
+        decimal_hour_ones <= inner_hour[3:0];
+
+        // 将十位数和个位数的十进制值转换为 ASCII 码
+        ascii_hour_tens <= decimal_hour_tens + 'd48;
+        ascii_hour_ones <= 'd95;
     end else begin
         inner_hour <= Hour;
         // 将小时值转换为十进制数

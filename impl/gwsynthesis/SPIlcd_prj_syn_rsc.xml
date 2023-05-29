@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Module name="spi_st7735lcd" Lut="9">
+<Module name="spi_st7735lcd" Lut="7">
+    <SubModule name="keyValue1" Register="19" Lut="27">
+        <SubModule name="KeyPressu0" Register="29" Lut="51"/>
+        <SubModule name="KeyPressu1" Register="29" Lut="51"/>
+        <SubModule name="KeyPressu2" Register="29" Lut="50"/>
+        <SubModule name="KeyPressu3" Register="29" Lut="49"/>
+    </SubModule>
+    <SubModule name="Buzzer1" Register="46" Lut="91"/>
     <SubModule name="U0" Register="26" Alu="24" Lut="8"/>
     <SubModule name="S0" Register="4" Lut="4"/>
     <SubModule name="S1" Register="4" Lut="4"/>
     <SubModule name="M0" Register="4" Lut="4"/>
-    <SubModule name="M1" Register="4" Lut="4"/>
-    <SubModule name="H0" Register="8" Lut="18"/>
-    <SubModule name="dht11_inst" Register="115" Alu="31" Lut="135"/>
-    <SubModule name="lcd_init_inst" Register="68" Lut="239"/>
+    <SubModule name="M1" Register="4" Lut="6"/>
+    <SubModule name="H0" Register="8" Lut="19"/>
+    <SubModule name="clockstatus_inst" Register="6" Lut="8"/>
+    <SubModule name="dht11_inst" Register="115" Alu="32" Lut="139"/>
+    <SubModule name="lcd_init_inst" Register="68" Lut="227"/>
     <SubModule name="muxcontrol_inst" Register="10" Lut="12"/>
     <SubModule name="lcd_write_inst" Register="19" Lut="32"/>
-    <SubModule name="show_string_number_inst" Register="149" Alu="7" Lut="185"/>
-    <SubModule name="lcd_show_char_inst" Register="53" Alu="9" Lut="81">
+    <SubModule name="show_string_number_inst" Register="153" Alu="7" Lut="197"/>
+    <SubModule name="lcd_show_char_inst" Register="53" Alu="9" Lut="84">
         <SubModule name="your_instance_name" Bsram="2"/>
     </SubModule>
 </Module>

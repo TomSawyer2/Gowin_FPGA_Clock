@@ -17,23 +17,57 @@
   "SubInsts" : [
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 67,
-    "InstName" : "B0",
-    "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/btn_deb.v",
+    "InstLine" : 57,
+    "InstName" : "keyValue1",
+    "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
     "ModuleLine" : 1,
-    "ModuleName" : "btn_deb"
+    "ModuleName" : "KeyValue",
+    "SubInsts" : [
+     {
+      "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
+      "InstLine" : 25,
+      "InstName" : "KeyPressu0",
+      "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyPress.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "KeyPress"
+     },
+     {
+      "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
+      "InstLine" : 33,
+      "InstName" : "KeyPressu1",
+      "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyPress.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "KeyPress"
+     },
+     {
+      "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
+      "InstLine" : 41,
+      "InstName" : "KeyPressu2",
+      "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyPress.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "KeyPress"
+     },
+     {
+      "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
+      "InstLine" : 49,
+      "InstName" : "KeyPressu3",
+      "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/KeyPress.v",
+      "ModuleLine" : 1,
+      "ModuleName" : "KeyPress"
+     }
+    ]
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 70,
-    "InstName" : "B1",
-    "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/btn_deb.v",
+    "InstLine" : 66,
+    "InstName" : "Buzzer1",
+    "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/Buzzer.v",
     "ModuleLine" : 1,
-    "ModuleName" : "btn_deb"
+    "ModuleName" : "Buzzer"
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 73,
+    "InstLine" : 97,
     "InstName" : "U0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/Divider.v",
     "ModuleLine" : 2,
@@ -41,7 +75,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 79,
+    "InstLine" : 103,
     "InstName" : "S0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter10.v",
     "ModuleLine" : 2,
@@ -49,7 +83,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 83,
+    "InstLine" : 107,
     "InstName" : "S1",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter6.v",
     "ModuleLine" : 2,
@@ -57,7 +91,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 87,
+    "InstLine" : 111,
     "InstName" : "M0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter10.v",
     "ModuleLine" : 2,
@@ -65,7 +99,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 91,
+    "InstLine" : 115,
     "InstName" : "M1",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter6.v",
     "ModuleLine" : 2,
@@ -73,7 +107,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 98,
+    "InstLine" : 122,
     "InstName" : "H0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter24.v",
     "ModuleLine" : 2,
@@ -81,7 +115,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 103,
+    "InstLine" : 130,
     "InstName" : "D0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/Dividerother.v",
     "ModuleLine" : 2,
@@ -89,7 +123,15 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 108,
+    "InstLine" : 132,
+    "InstName" : "clockstatus_inst",
+    "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/ClockStatus.v",
+    "ModuleLine" : 1,
+    "ModuleName" : "ClockStatus"
+   },
+   {
+    "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
+    "InstLine" : 142,
     "InstName" : "dht11_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/dht11.v",
     "ModuleLine" : 3,
@@ -97,7 +139,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 135,
+    "InstLine" : 169,
     "InstName" : "lcd_init_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_init.v",
     "ModuleLine" : 7,
@@ -105,7 +147,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 152,
+    "InstLine" : 186,
     "InstName" : "muxcontrol_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/centerctrl.v",
     "ModuleLine" : 6,
@@ -113,7 +155,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 167,
+    "InstLine" : 201,
     "InstName" : "lcd_write_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_write.v",
     "ModuleLine" : 7,
@@ -121,7 +163,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 181,
+    "InstLine" : 215,
     "InstName" : "show_string_number_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/show_string_number_ctrl.v",
     "ModuleLine" : 16,
@@ -129,7 +171,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 201,
+    "InstLine" : 236,
     "InstName" : "lcd_show_char_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_show_char.v",
     "ModuleLine" : 6,

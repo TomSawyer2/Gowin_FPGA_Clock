@@ -1,12 +1,14 @@
 `timescale 1ns / 1ps
 module counter24(
-   input nCR,Hour_EN,CP_1Hz,
+   input nCR,Hour_EN,CP_1Hz,[3:0] Status,[7:0] newHour,clk,
    output reg[3:0] cntH,cntL
    );
    always @(posedge CP_1Hz or negedge nCR)
    begin
      if(~nCR)
          {cntH,cntL}<=8'h00;
+     else if (Status == 4'd1)
+        cntH <= newHour[7:4];
      else if(~Hour_EN)
          {cntH,cntL}<={cntH,cntL};
      else if((cntH>2)||(cntL>9)||((cntH==2)&&(cntL>=3)))
