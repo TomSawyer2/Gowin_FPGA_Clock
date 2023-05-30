@@ -35,7 +35,7 @@ module show_string_number_ctrl
 //****************** Parameter and Internal Signal *******************//        
 reg     [4:0]   cnt1;            //展示 行 计数器？！？3行故cnt1值只需0，1，2
 //也可能是延迟计数器，init_done为高电平后，延迟3拍，产生show_char_flag高脉冲
-reg     [7:0]   cnt_ascii_num;
+reg     [6:0]   cnt_ascii_num;
 
 //******************************* Main Code **************************//
 //en_size为1时调用字体大小为16x8，为0时调用字体大小为12x6；
@@ -70,147 +70,71 @@ always@(posedge sys_clk or negedge sys_rst_n)
 
 reg [3:0] decimal_hour_tens;      // 十位数的十进制值
 reg [3:0] decimal_hour_ones;      // 个位数的十进制值
-reg [7:0] ascii_hour_tens;        // 十位数的 ASCII 码值
-reg [7:0] ascii_hour_ones;        // 个位数的 ASCII 码值
-
-reg[7:0] inner_hour;
 
 always @(posedge sys_clk or negedge sys_rst_n) begin
     if (!sys_rst_n) begin
-        inner_hour <= 8'h00;               // 复位时重置小时值为 0
         decimal_hour_tens <= 4'h0;        // 复位时重置十位数为 0
         decimal_hour_ones <= 4'h0;        // 复位时重置个位数为 0
-        ascii_hour_tens <= 'd48;          // 复位时重置十位数的 ASCII 码值为 '0'
-        ascii_hour_ones <= 'd48;          // 复位时重置个位数的 ASCII 码值为 '0'
-    end else if (Status == 4'd1) begin
-        inner_hour <= Hour;
-        // 将小时值转换为十进制数
-        decimal_hour_tens <= inner_hour[7:4];
-        decimal_hour_ones <= inner_hour[3:0];
-
-        // 将十位数和个位数的十进制值转换为 ASCII 码
-        ascii_hour_tens <= 'd95;    // 下划线_
-        ascii_hour_ones <= decimal_hour_ones + 'd48;    // '0' 的 ASCII 码值为 48
-    end else if (Status == 4'd2) begin
-        inner_hour <= Hour;
-        // 将小时值转换为十进制数
-        decimal_hour_tens <= inner_hour[7:4];
-        decimal_hour_ones <= inner_hour[3:0];
-
-        // 将十位数和个位数的十进制值转换为 ASCII 码
-        ascii_hour_tens <= decimal_hour_tens + 'd48;
-        ascii_hour_ones <= 'd95;
     end else begin
-        inner_hour <= Hour;
         // 将小时值转换为十进制数
-        decimal_hour_tens <= inner_hour[7:4];
-        decimal_hour_ones <= inner_hour[3:0];
-
-        // 将十位数和个位数的十进制值转换为 ASCII 码
-        ascii_hour_tens <= decimal_hour_tens + 'd48;    // '0' 的 ASCII 码值为 48
-        ascii_hour_ones <= decimal_hour_ones + 'd48;    // '0' 的 ASCII 码值为 48
+        decimal_hour_tens <= Hour[7:4];
+        decimal_hour_ones <= Hour[3:0];
     end
 end
 
 reg [3:0] decimal_minute_tens;      // 十位数的十进制值
 reg [3:0] decimal_minute_ones;      // 个位数的十进制值
-reg [7:0] ascii_minute_tens;        // 十位数的 ASCII 码值
-reg [7:0] ascii_minute_ones;        // 个位数的 ASCII 码值
-
-reg[7:0] inner_minute;
 
 always @(posedge sys_clk or negedge sys_rst_n) begin
     if (!sys_rst_n) begin
-        inner_minute <= 8'h00;               // 复位时重置小时值为 0
         decimal_minute_tens <= 4'h0;        // 复位时重置十位数为 0
         decimal_minute_ones <= 4'h0;        // 复位时重置个位数为 0
-        ascii_minute_tens <= 'd48;          // 复位时重置十位数的 ASCII 码值为 '0'
-        ascii_minute_ones <= 'd48;          // 复位时重置个位数的 ASCII 码值为 '0'
     end else begin
-        inner_minute <= Minute;
         // 将小时值转换为十进制数
-        decimal_minute_tens <= inner_minute[7:4];
-        decimal_minute_ones <= inner_minute[3:0];
-
-        // 将十位数和个位数的十进制值转换为 ASCII 码
-        ascii_minute_tens <= decimal_minute_tens + 'd48;    // '0' 的 ASCII 码值为 48
-        ascii_minute_ones <= decimal_minute_ones + 'd48;    // '0' 的 ASCII 码值为 48
+        decimal_minute_tens <= Minute[7:4];
+        decimal_minute_ones <= Minute[3:0];
     end
 end
 
 reg [3:0] decimal_second_tens;      // 十位数的十进制值
 reg [3:0] decimal_second_ones;      // 个位数的十进制值
-reg [7:0] ascii_second_tens;        // 十位数的 ASCII 码值
-reg [7:0] ascii_second_ones;        // 个位数的 ASCII 码值
-
-reg[7:0] inner_second;
 
 always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (!sys_rst_n) begin
-        inner_second <= 8'h00;               // 复位时重置小时值为 0
+    if (!sys_rst_n) begin          // 复位时重置小时值为 0
         decimal_second_tens <= 4'h0;        // 复位时重置十位数为 0
         decimal_second_ones <= 4'h0;        // 复位时重置个位数为 0
-        ascii_second_tens <= 'd48;          // 复位时重置十位数的 ASCII 码值为 '0'
-        ascii_second_ones <= 'd48;          // 复位时重置个位数的 ASCII 码值为 '0'
     end else begin
-        inner_second <= Second;
         // 将小时值转换为十进制数
-        decimal_second_tens <= inner_second[7:4];
-        decimal_second_ones <= inner_second[3:0];
-
-        // 将十位数和个位数的十进制值转换为 ASCII 码
-        ascii_second_tens <= decimal_second_tens + 'd48;    // '0' 的 ASCII 码值为 48
-        ascii_second_ones <= decimal_second_ones + 'd48;    // '0' 的 ASCII 码值为 48
+        decimal_second_tens <= Second[7:4];
+        decimal_second_ones <= Second[3:0];
     end
 end
 
 // 温度显示处理
 reg [3:0] decimal_temp_tens;      // 十位数的十进制值
 reg [3:0] decimal_temp_ones;      // 个位数的十进制值
-reg [7:0] ascii_temp_tens;        // 十位数的 ASCII 码值
-reg [7:0] ascii_temp_ones;        // 个位数的 ASCII 码值
-
-reg[7:0] inner_temp;
 
 always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (!sys_rst_n) begin
-        inner_temp <= 8'h00;            
+    if (!sys_rst_n) begin        
         decimal_temp_tens <= 4'h0;       
-        decimal_temp_ones <= 4'h0;        
-        ascii_temp_tens <= 'd48;        
-        ascii_temp_ones <= 'd48;        
+        decimal_temp_ones <= 4'h0;    
     end else begin
-        inner_temp <= Temperature;
-        decimal_temp_tens <= inner_temp/10;
-        decimal_temp_ones <= inner_temp%10;
-
-        ascii_temp_tens <= decimal_temp_tens + 'd48;    // '0' 的 ASCII 码值为 48
-        ascii_temp_ones <= decimal_temp_ones + 'd48;    // '0' 的 ASCII 码值为 48
+        decimal_temp_tens <= Temperature/10;
+        decimal_temp_ones <= Temperature%10;
     end
 end
 
 // 湿度显示处理
 reg [3:0] decimal_humi_tens;      // 十位数的十进制值
 reg [3:0] decimal_humi_ones;      // 个位数的十进制值
-reg [7:0] ascii_humi_tens;        // 十位数的 ASCII 码值
-reg [7:0] ascii_humi_ones;        // 个位数的 ASCII 码值
-
-reg[7:0] inner_humi;
 
 always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (!sys_rst_n) begin
-        inner_humi <= 8'h00;            
+    if (!sys_rst_n) begin            
         decimal_humi_tens <= 4'h0;       
-        decimal_humi_ones <= 4'h0;        
-        ascii_humi_tens <= 'd48;        
-        ascii_humi_ones <= 'd48;        
+        decimal_humi_ones <= 4'h0;
     end else begin
-        inner_humi <= Humidity;
-        decimal_humi_tens <= inner_humi/10;
-        decimal_humi_ones <= inner_humi%10;
-
-        ascii_humi_tens <= decimal_humi_tens + 'd48;    // '0' 的 ASCII 码值为 48
-        ascii_humi_ones <= decimal_humi_ones + 'd48;    // '0' 的 ASCII 码值为 48
+        decimal_humi_tens <= Humidity/10;
+        decimal_humi_ones <= Humidity%10;
     end
 end
 
@@ -244,14 +168,14 @@ always@(posedge sys_clk or negedge sys_rst_n)
             // 空行
             19: ascii_num <= 'd32-'d32;  // 
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
-            20: ascii_num <= ascii_hour_tens-'d32;  // 2
-            21: ascii_num <= ascii_hour_ones-'d32;  // 0
+            20: ascii_num <= (Status == 4'd1 || Status == 4'd7) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
+            21: ascii_num <= (Status == 4'd2 || Status == 4'd8) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
             22: ascii_num <= 'd58-'d32;  // :
-            23: ascii_num <= ascii_minute_tens-'d32;  // 1
-            24: ascii_num <= ascii_minute_ones-'d32;  // 0
+            23: ascii_num <= (Status == 4'd3 || Status == 4'd9) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
+            24: ascii_num <= (Status == 4'd4 || Status == 4'd10) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
             25: ascii_num <= 'd58-'d32;  // :
-            26: ascii_num <= ascii_second_tens-'d32; // 2
-            27: ascii_num <= ascii_second_ones-'d32; // 2
+            26: ascii_num <= Status == 4'd5 ? 'd95 - 'd32 : decimal_second_tens+'d16; // 2
+            27: ascii_num <= Status == 4'd6 ? 'd95 - 'd32 : decimal_second_ones+'d16; // 2
             // 空行
             28: ascii_num <= 'd32-'d32;  // 
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
@@ -290,11 +214,11 @@ always@(posedge sys_clk or negedge sys_rst_n)
             58: ascii_num <= 'd45-'d32;  // -
             59: ascii_num <= 'd45-'d32;  // -
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            60: ascii_num <= ascii_temp_tens-'d32;  // 2
-            61: ascii_num <= ascii_temp_ones-'d32;  // 0
+            60: ascii_num <= decimal_temp_tens+'d16;  // 2
+            61: ascii_num <= decimal_temp_ones+'d16;  // 0
             62: ascii_num <= 'd8451-'d32;  // ℃
-            63: ascii_num <= ascii_humi_tens-'d32;  // 1
-            64: ascii_num <= ascii_humi_ones-'d32;  // 0
+            63: ascii_num <= decimal_humi_tens+'d16;  // 1
+            64: ascii_num <= decimal_humi_ones+'d16;  // 0
             65: ascii_num <= 'd37-'d32;  // %
             default: ascii_num <= 'd0;
         endcase

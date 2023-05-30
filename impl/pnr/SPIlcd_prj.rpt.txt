@@ -11,26 +11,26 @@
   <PnR Version>: V1.9.8.05
   <Part Number>: GW1N-LV1QN48C6/I5
   <Device>: GW1N-1
-  <Created Time>:Mon May 29 23:40:05 2023
+  <Created Time>:Wed May 31 00:24:00 2023
 
 
 2. PnR Details
 
   Running placement:
-    Placement Phase 0: CPU time = 0h 0m 0.091s, Elapsed time = 0h 0m 0.091s
-    Placement Phase 1: CPU time = 0h 0m 0.043s, Elapsed time = 0h 0m 0.043s
-    Placement Phase 2: CPU time = 0h 0m 0.082s, Elapsed time = 0h 0m 0.081s
+    Placement Phase 0: CPU time = 0h 0m 0.086s, Elapsed time = 0h 0m 0.086s
+    Placement Phase 1: CPU time = 0h 0m 0.041s, Elapsed time = 0h 0m 0.041s
+    Placement Phase 2: CPU time = 0h 0m 0.072s, Elapsed time = 0h 0m 0.072s
     Placement Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
     Total Placement: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s
  Running routing:
-    Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
+    Routing Phase 0: CPU time = 0h 0m 0.001s, Elapsed time = 0h 0m 0.001s
     Routing Phase 1: CPU time = 0h 0m 0.026s, Elapsed time = 0h 0m 0.026s
-    Routing Phase 2: CPU time = 0h 0m 0.394s, Elapsed time = 0h 0m 0.393s
-    Total Routing: CPU time = 0h 0m 0.42s, Elapsed time = 0h 0m 0.419s
+    Routing Phase 2: CPU time = 0h 0m 0.395s, Elapsed time = 0h 0m 0.395s
+    Total Routing: CPU time = 0h 0m 0.422s, Elapsed time = 0h 0m 0.422s
  Generate output files:
-    CPU time = 0h 0m 0.421s, Elapsed time = 0h 0m 0.421s
+    CPU time = 0h 0m 0.43s, Elapsed time = 0h 0m 0.43s
 
- Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 218MB
+ Total Time and Memory Usage: CPU time = 0h 0m 2s, Elapsed time = 0h 0m 2s, Peak memory usage = 208MB
 
 
 3. Resource Usage Summary
@@ -39,18 +39,18 @@
   Resources                   | Usage
   ----------------------------------------------------------
   Logic                       | 1147/1152  99%
-    --LUT,ALU,ROM16           | 1147(1067 LUT, 80 ALU, 0 ROM16)
+    --LUT,ALU,ROM16           | 1147(1048 LUT, 99 ALU, 0 ROM16)
     --SSRAM(RAM16)            | 0
-  Register                    | 655/945  69%
+  Register                    | 596/945  63%
     --Logic Register as Latch | 0/864  0%
-    --Logic Register as FF    | 649/864  75%
+    --Logic Register as FF    | 590/864  68%
     --I/O Register as Latch   | 0/81  0%
     --I/O Register as FF      | 6/81  7%
   CLS                         | 576/576  100%
-  I/O Port                    | 19
-  I/O Buf                     | 19
+  I/O Port                    | 18
+  I/O Buf                     | 18
     --Input Buf               | 6
-    --Output Buf              | 12
+    --Output Buf              | 11
     --Inout Buf               | 1
   IOLOGIC                     | 0%
   BSRAM                       | 50%
@@ -74,7 +74,7 @@
   -----------------------
   bank 0   | 9/11(81%)   
   bank 1   | 7/9(77%)    
-  bank 2   | 2/12(16%)   
+  bank 2   | 1/12(8%)    
   bank 3   | 1/9(11%)    
   =======================
 
@@ -99,7 +99,7 @@
   Signal         | Global Clock   | Location
   -------------------------------------------
   xtal_clk_d     | PRIMARY        |  LEFT RIGHT
-  CP_1Hz         | PRIMARY        |  LEFT
+  CP_1Hz_Z       | PRIMARY        |  LEFT
   clk_1M         | PRIMARY        |  LEFT
   sys_rst_n_d    | SECONDARY      |  -
   ===========================================
@@ -111,7 +111,7 @@
 Port Name   | Diff Pair | Loc./Bank | Constraint | Dir.  | Site     | IO Type    | Drive | Pull Mode | PCI Clamp | Hysteresis | Open Drain | Slew Rate | Vref       | Single Resistor | Diff Resistor | BankVccio 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 xtal_clk    |           | 35/1      | Y          | in    | IOR5[A]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | OFF             | NA            | 3.3       
-sys_rst_n   |           | 15/2      | Y          | in    | IOB6[B]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8       
+sys_rst_n   |           | 15/2      | Y          | in    | IOB6[B]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2       
 key_col[0]  |           | 42/0      | Y          | in    | IOT10[B] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8       
 key_col[1]  |           | 43/0      | Y          | in    | IOT10[A] | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8       
 key_col[2]  |           | 44/0      | Y          | in    | IOT7[B]  | LVCMOS18   | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8       
@@ -122,7 +122,6 @@ lcd_sclk    |           | 27/1      | Y          | out   | IOR7[A]  | LVCMOS33  
 lcd_mosi    |           | 28/1      | Y          | out   | IOR6[H]  | LVCMOS33   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 3.3       
 lcd_cs      |           | 31/1      | Y          | out   | IOR6[D]  | LVCMOS33   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 3.3       
 lcd_led     |           | 32/1      | Y          | out   | IOR6[C]  | LVCMOS33   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | OFF             | NA            | 3.3       
-testled     |           | 16/2      | Y          | out   | IOB7[A]  | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8       
 key_row[0]  |           | 38/0      | Y          | out   | IOT17[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8       
 key_row[1]  |           | 39/0      | Y          | out   | IOT17[A] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8       
 key_row[2]  |           | 40/0      | Y          | out   | IOT14[B] | LVCMOS18   | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8       
@@ -151,18 +150,18 @@ Loc./Bank| Signal      | Dir.  | Site     | IO Type  | Drive | Pull Mode | PCI C
 39/0     | key_row[1]  | out   | IOT17[A] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8  
 38/0     | key_row[0]  | out   | IOT17[B] | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8  
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-13/2     | -           | in    | IOB3[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-14/2     | -           | in    | IOB3[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-15/2     | sys_rst_n   | in    | IOB6[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-16/2     | testled     | out   | IOB7[A]  | LVCMOS18 | 8     | UP        | NA        | NA         | OFF        | FAST      | NA         | NA              | NA            | 1.8  
-17/2     | -           | in    | IOB10[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-18/2     | -           | in    | IOB10[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-19/2     | -           | in    | IOB11[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-20/2     | -           | in    | IOB11[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-21/2     | -           | in    | IOB14[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-22/2     | -           | in    | IOB14[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-23/2     | -           | in    | IOB16[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
-24/2     | -           | in    | IOB16[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.8  
+13/2     | -           | in    | IOB3[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+14/2     | -           | in    | IOB3[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+15/2     | sys_rst_n   | in    | IOB6[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+16/2     | -           | in    | IOB7[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+17/2     | -           | in    | IOB10[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+18/2     | -           | in    | IOB10[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+19/2     | -           | in    | IOB11[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+20/2     | -           | in    | IOB11[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+21/2     | -           | in    | IOB14[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+22/2     | -           | in    | IOB14[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+23/2     | -           | in    | IOB16[A] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
+24/2     | -           | in    | IOB16[B] | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 1.2  
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3/3      | -           | in    | IOL6[A]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 3.3  
 4/3      | -           | in    | IOL6[B]  | LVCMOS18 | NA    | UP        | NA        | NONE       | NA         | NA        | NA         | NA              | NA            | 3.3  

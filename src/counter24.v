@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 module counter24(
-   input nCR,Hour_EN,CP_1Hz,[3:0] Status,[7:0] newHour,clk,
+   input nCR,Hour_EN,CP_1Hz,[3:0] Status,[7:0] newHour,
    output reg[3:0] cntH,cntL
    );
    always @(posedge CP_1Hz or negedge nCR)

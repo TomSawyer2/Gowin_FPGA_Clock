@@ -8,10 +8,8 @@
         <File path="src/Buzzer.v" type="file.verilog" enable="1"/>
         <File path="src/ClockStatus.v" type="file.verilog" enable="1"/>
         <File path="src/Divider.v" type="file.verilog" enable="1"/>
-        <File path="src/Dividerother.v" type="file.verilog" enable="1"/>
         <File path="src/KeyPress.v" type="file.verilog" enable="1"/>
         <File path="src/KeyValue.v" type="file.verilog" enable="1"/>
-        <File path="src/SEG_LUT.v" type="file.verilog" enable="1"/>
         <File path="src/centerctrl.v" type="file.verilog" enable="1"/>
         <File path="src/counter10.v" type="file.verilog" enable="1"/>
         <File path="src/counter24.v" type="file.verilog" enable="1"/>

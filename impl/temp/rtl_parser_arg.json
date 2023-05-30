@@ -5,11 +5,11 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/Divider.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/ClockStatus.v",
    "Type" : "verilog"
   },
   {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/Dividerother.v",
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/Divider.v",
    "Type" : "verilog"
   },
   {
@@ -18,10 +18,6 @@
   },
   {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/SEG_LUT.v",
    "Type" : "verilog"
   },
   {
@@ -66,10 +62,6 @@
   },
   {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/ClockStatus.v",
    "Type" : "verilog"
   }
  ],

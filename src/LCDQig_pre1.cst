@@ -7,7 +7,6 @@
 
 IO_LOC "xtal_clk"   35;
 IO_LOC "sys_rst_n" 15;
-IO_LOC "testled"   16;
 IO_LOC "dht11" 46;
 
 IO_LOC "lcd_led"  32;

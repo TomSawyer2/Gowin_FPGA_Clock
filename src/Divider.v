@@ -2,7 +2,6 @@
 module Divider(
    input CLK_12,
    input nCR,
-   input EN,
    output reg CP_1Hz 
    );
    parameter N=25,CLK_Freq=24000000,OUT_Freq=1;//24MHz

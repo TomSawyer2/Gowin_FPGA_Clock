@@ -26,7 +26,6 @@ module  spi_st7735lcd
     output          lcd_mosi      ,
     output          lcd_cs        ,
     output          lcd_led       ,
-    output          testled       ,
     output [3:0]    key_row       ,
     output          BUZZER        
 );
@@ -44,7 +43,6 @@ wire    [8:0]   start_y             ;
 
 wire    [8:0]   show_char_data      ;
 
-assign  testled = ~init_done;
 assign  lcd_led = 1'b1;  //屏背光常亮
 
 wire sys_clk;
@@ -62,59 +60,54 @@ KeyValue keyValue1(
 	.KEY_Value(KEY_Value),
 	.Value_en(Value_en)
 );
-	
-Buzzer Buzzer1(
-	.CLK(sys_clk),
-	.nRST(sys_rst_n),
-	.BUZZER(BUZZER),
-    .Value_en(Value_en)
-);
 
 // 数字钟逻辑
-// 设置Adj_Min默认为低电平
-wire Adj_Min=1'b1;
-// 设置Adj_Hour默认为低电平
-wire Adj_Hour=1'b1;
 // 设置nCR复位信号默认为高电平
 wire nCR=1'b1;
-// 设置EN使能信号默认为高电平
-wire EN=1'b1;
 
 wire[7:0] Hour,Minute,Second;
 wire[7:0] newHour,newMinute,newSecond;
 wire MinL_EN,MinH_EN,Hour_EN;
 wire CP_1Hz;
-wire[2:0] sel; 
 wire flag0,flag1;
 wire [3:0] Status;
+wire [7:0] alarmHour, alarmMinute;
 
-//btn_deb B0(.clk(sys_clk),
-//           .btn_in(Adj_Min),
-//           .btn_out(flag0));
-//btn_deb B1(.clk(sys_clk),
-//           .btn_in(Adj_Hour),
-//           .btn_out(flag1));
+Buzzer Buzzer1(
+	.CLK(sys_clk),
+	.nRST(sys_rst_n),
+	.BUZZER(BUZZER),
+    .Value_en(Hour == alarmHour && Minute == alarmMinute)
+);
+
 Divider U0(.CLK_12(sys_clk),
            .nCR(nCR),
-           .EN(EN),
            .CP_1Hz(CP_1Hz)
 );
 defparam U0.N=25,U0.CLK_Freq=12000000,U0.OUT_Freq=1;
 counter10 S0(.Q(Second[3:0]),
              .nCR(nCR),
-             .EN(EN),
+             .EN(1),
+             .newOnes(0),
+             .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter6 S1( .Q(Second[7:4]),
              .nCR(nCR),
              .EN((Second[3:0]==4'h9)),
+             .newTens(0),
+             .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter10 M0(.Q(Minute[3:0]),
              .nCR(nCR),
              .EN(MinL_EN),
+             .newOnes(newMinute[3:0]),
+             .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter6 M1(.Q(Minute[7:4]),
             .nCR(nCR),
             .EN(MinH_EN),
+            .newTens(newMinute[7:4]),
+            .Status(Status),
             .CP_1Hz(CP_1Hz));
 assign MinL_EN=flag0  ? 1 : (Second==8'h59);
 assign MinH_EN=(flag0 &&(Minute[3:0]==4'h9))||((Minute[3:0]==4'h9)&&(Second==8'h59));
@@ -125,15 +118,16 @@ counter24 H0(.cntH(Hour[7:4]),
              .Hour_EN(Hour_EN),
              .Status(Status),
              .newHour(newHour),
-             .clk(sys_clk),
              .CP_1Hz(CP_1Hz));
-Dividerother D0(.CLK_12(sys_clk),.nCR(nCR),.sel(sel));
 
 ClockStatus clockstatus_inst (.clk(sys_clk),
                               .rstn(sys_rst_n),
                               .Value_en(Value_en),
                               .KEY_Value(KEY_Value),
                               .newHour(newHour),
+                              .newMinute(newMinute),
+                              .alarmHour(alarmHour),
+                              .alarmMinute(alarmMinute),
                               .Status(Status));
 
 // DHT11逻辑

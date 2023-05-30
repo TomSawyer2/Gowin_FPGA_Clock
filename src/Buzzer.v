@@ -13,7 +13,7 @@ module Buzzer(
 //    parameter  FA = 18'd68766;        //349
 //    parameter  SO = 18'd61224 ;       //392
 //    parameter  LA = 18'd54544 ;        //440
-//    parameter  XI = 18'd48581 ;         //494   
+//    parameter  XI = 18'd48581 ;         //494
 
 
     reg [24:0] cnt = 0;
