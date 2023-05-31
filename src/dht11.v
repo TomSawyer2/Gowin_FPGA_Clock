@@ -4,18 +4,17 @@ module dht11(
     input               clk,   
     input               rst_n,                                   
     inout               dht11,
-    output reg[7:0]     temp,
-    output reg[7:0]     humi
+    output reg[15:0]     TempHumi
 ); 
 /**************parameter********************/              
-parameter  POWER_ON_NUM     = 1000_000;              //用于开机等待，1us是基本单位，等待1s
-parameter  S_POWER_ON      = 3'd0;       
-parameter  S_LOW_20MS      = 3'd1;     
-parameter  S_HIGH_13US     = 3'd2;    
-parameter  S_LOW_83US      = 3'd3;      
-parameter  S_HIGH_87US     = 3'd4;      
-parameter  S_SEND_DATA     = 3'd5;      
-parameter  S_DELAY         = 3'd6; 
+parameter POWER_ON_NUM = 1000_000;              //用于开机等待，1us是基本单位，等待1s
+parameter S_POWER_ON = 3'd0;       
+parameter S_LOW_20MS = 3'd1;     
+parameter S_HIGH_13US = 3'd2;    
+parameter S_LOW_83US = 3'd3;      
+parameter S_HIGH_87US = 3'd4;      
+parameter S_SEND_DATA = 3'd5;      
+parameter S_DELAY = 3'd6; 
 //reg define
 reg[2:0]   cur_state;        
 reg[2:0]   next_state;        
@@ -37,15 +36,13 @@ reg[7:0]   ones_digits;
 wire       dht_podge;        //data posedge
 wire       dht_nedge;        //data negedge
 /*********************main codes*********************/
-assign dht11     = dht_buffer;
-assign dht_podge   = ~dht_d1 & dht_d0; // catch posedge
-assign dht_nedge   = dht_d1  & (~dht_d0); // catch negedge
-
-
+assign dht11 = dht_buffer;
+assign dht_podge = ~dht_d1 & dht_d0; // catch posedge
+assign dht_nedge = dht_d1 & (~dht_d0); // catch negedge
 
 /*********************counters*****************************/
 //clock with 1MHz
-always @ (posedge clk or negedge rst_n) begin
+always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         clk_cnt <= 5'd0;
         clk_1M  <= 1'b0;
@@ -58,7 +55,7 @@ always @ (posedge clk or negedge rst_n) begin
     end 
 end
 //counter 1 us
-always @ (posedge clk_1M or negedge rst_n) begin
+always @(posedge clk_1M or negedge rst_n) begin
     if (!rst_n)
         count_1us <= 21'd0;
     else if (us_clear)
@@ -67,14 +64,14 @@ always @ (posedge clk_1M or negedge rst_n) begin
         count_1us <= count_1us + 1'b1;
 end 
 //change state
-always @ (posedge clk_1M or negedge rst_n) begin
+always @(posedge clk_1M or negedge rst_n) begin
     if (!rst_n)
         cur_state <= S_POWER_ON;
     else 
         cur_state <= next_state;
 end 
 // state machine
-always @ (posedge clk_1M or negedge rst_n) begin
+always @(posedge clk_1M or negedge rst_n) begin
     if(!rst_n) 
 	 begin
         next_state <= S_POWER_ON;
@@ -88,7 +85,7 @@ always @ (posedge clk_1M or negedge rst_n) begin
     else 
 	 begin
         case (cur_state)     
-            S_POWER_ON :    //wait
+            S_POWER_ON:    //wait
 				begin                
                     if(count_1us < POWER_ON_NUM)
                         begin
@@ -186,11 +183,8 @@ always @ (posedge clk_1M or negedge rst_n) begin
                          begin  
                      next_state <= S_DELAY;  //有改动
                      if(data_temp[7:0] == data_temp[39:32] + data_temp[31:24] + data_temp[23:16] + data_temp[15:8])
-                       data_valid <= data_temp[39:8];  
-                       humi <= data_valid[31:24];
-                       temp <= data_valid[15:8];
-                       
-                       
+                       data_valid <= data_temp[39:8];
+                       TempHumi <= {data_valid[15:8], data_valid[31:24]};
                     end
                 end 
                 
@@ -211,7 +205,7 @@ always @ (posedge clk_1M or negedge rst_n) begin
 end
 
 //edge
-always @ (posedge clk_1M or negedge rst_n) begin
+always @(posedge clk_1M or negedge rst_n) begin
     if (!rst_n) begin
         dht_d0 <= 1'b1;
         dht_d1 <= 1'b1;

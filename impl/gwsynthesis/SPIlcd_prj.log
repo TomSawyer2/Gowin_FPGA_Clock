@@ -34,13 +34,10 @@ Compiling module 'lcd_init'("F:\hardware_design\gowin_fpga_clock\src\lcd_init.v"
 Compiling module 'muxcontrol'("F:\hardware_design\gowin_fpga_clock\src\centerctrl.v":6)
 Compiling module 'lcd_write'("F:\hardware_design\gowin_fpga_clock\src\lcd_write.v":7)
 Compiling module 'show_string_number_ctrl'("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":16)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":122)
-WARN  (EX3791) : Expression size 8 truncated to fit in target size 4("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":136)
-WARN  (EX3791) : Expression size 14 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":219)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":189)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":193)
 Compiling module 'lcd_show_char'("F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v":6)
 Compiling module 'ascii_pROM'("F:\hardware_design\gowin_fpga_clock\src\gowin_prom\ascii_pROM.v":9)
-WARN  (EX1998) : Net 'flag0' does not have a driver("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":72)
-WARN  (EX1998) : Net 'flag1' does not have a driver("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":72)
 NOTE  (EX0101) : Current top module is "spi_st7735lcd"
 [5%] Running netlist conversion ...
 Running device independent optimization ...

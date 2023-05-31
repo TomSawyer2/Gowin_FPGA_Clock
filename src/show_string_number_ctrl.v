@@ -22,9 +22,9 @@ module show_string_number_ctrl
     input       wire    [7:0]   Hour                ,
     input       wire    [7:0]   Minute              ,
     input       wire    [7:0]   Second              ,
-    input       wire    [7:0]   Temperature         ,
-    input       wire    [7:0]   Humidity            ,
+    input       wire    [15:0]  TempHumi            ,
     input       wire    [3:0]   Status              ,
+    input       wire            haveAlarm           ,
 
     output      wire            en_size             ,
     output      reg             show_char_flag      ,
@@ -110,34 +110,6 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
     end
 end
 
-// 温度显示处理
-reg [3:0] decimal_temp_tens;      // 十位数的十进制值
-reg [3:0] decimal_temp_ones;      // 个位数的十进制值
-
-always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (!sys_rst_n) begin        
-        decimal_temp_tens <= 4'h0;       
-        decimal_temp_ones <= 4'h0;    
-    end else begin
-        decimal_temp_tens <= Temperature/10;
-        decimal_temp_ones <= Temperature%10;
-    end
-end
-
-// 湿度显示处理
-reg [3:0] decimal_humi_tens;      // 十位数的十进制值
-reg [3:0] decimal_humi_ones;      // 个位数的十进制值
-
-always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (!sys_rst_n) begin            
-        decimal_humi_tens <= 4'h0;       
-        decimal_humi_ones <= 4'h0;
-    end else begin
-        decimal_humi_tens <= Humidity/10;
-        decimal_humi_ones <= Humidity%10;
-    end
-end
-
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
         ascii_num <= 'd0;
@@ -168,16 +140,16 @@ always@(posedge sys_clk or negedge sys_rst_n)
             // 空行
             19: ascii_num <= 'd32-'d32;  // 
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
-            20: ascii_num <= (Status == 4'd1 || Status == 4'd7) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
-            21: ascii_num <= (Status == 4'd2 || Status == 4'd8) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
+            20: ascii_num <= (Status == 4'd1 || Status == 4'd5) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
+            21: ascii_num <= (Status == 4'd2 || Status == 4'd6) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
             22: ascii_num <= 'd58-'d32;  // :
-            23: ascii_num <= (Status == 4'd3 || Status == 4'd9) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
-            24: ascii_num <= (Status == 4'd4 || Status == 4'd10) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
+            23: ascii_num <= (Status == 4'd3 || Status == 4'd7) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
+            24: ascii_num <= (Status == 4'd4 || Status == 4'd8) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
             25: ascii_num <= 'd58-'d32;  // :
-            26: ascii_num <= Status == 4'd5 ? 'd95 - 'd32 : decimal_second_tens+'d16; // 2
-            27: ascii_num <= Status == 4'd6 ? 'd95 - 'd32 : decimal_second_ones+'d16; // 2
+            26: ascii_num <= decimal_second_tens+'d16; // 2
+            27: ascii_num <= decimal_second_ones+'d16; // 2
             // 空行
-            28: ascii_num <= 'd32-'d32;  // 
+            28: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟 
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
             29: ascii_num <= 'd50-'d32;  // 2
             30: ascii_num <= 'd48-'d32;  // 0
@@ -185,14 +157,14 @@ always@(posedge sys_clk or negedge sys_rst_n)
             32: ascii_num <= 'd51-'d32;  // 3
             33: ascii_num <= 'd47-'d32;  // /
             34: ascii_num <= 'd48-'d32;  // 0
-            35: ascii_num <= 'd53-'d32;  // 5
+            35: ascii_num <= 'd54-'d32;  // 6
             36: ascii_num <= 'd47-'d32;  // /
-            37: ascii_num <= 'd50-'d32;  // 2
-            38: ascii_num <= 'd49-'d32;  // 1
+            37: ascii_num <= 'd48-'d32;  // 0
+            38: ascii_num <= 'd50-'d32;  // 2
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
-            39: ascii_num <= 'd77-'d32;  // M
-            40: ascii_num <= 'd111-'d32; // o
-            41: ascii_num <= 'd110-'d32; // n
+            39: ascii_num <= 'd70-'d32;  // F
+            40: ascii_num <= 'd114-'d32; // r
+            41: ascii_num <= 'd105-'d32; // i
             42: ascii_num <= 'd46-'d32;  // .
             // 空行
             43: ascii_num <= 'd32-'d32;  // 
@@ -214,12 +186,13 @@ always@(posedge sys_clk or negedge sys_rst_n)
             58: ascii_num <= 'd45-'d32;  // -
             59: ascii_num <= 'd45-'d32;  // -
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            60: ascii_num <= decimal_temp_tens+'d16;  // 2
-            61: ascii_num <= decimal_temp_ones+'d16;  // 0
-            62: ascii_num <= 'd8451-'d32;  // ℃
-            63: ascii_num <= decimal_humi_tens+'d16;  // 1
-            64: ascii_num <= decimal_humi_ones+'d16;  // 0
-            65: ascii_num <= 'd37-'d32;  // %
+            60: ascii_num <= TempHumi[15:8]/10 +'d16;  // 2
+            61: ascii_num <= TempHumi[15:8]%10 +'d16;  // 0
+            62: ascii_num <= 'd67-'d32;  // ℃
+            63: ascii_num <= 'd32-'d32;  //
+            64: ascii_num <= TempHumi[7:0]/10 +'d16;  // 1
+            65: ascii_num <= TempHumi[7:0]%10 +'d16;  // 0
+            66: ascii_num <= 'd37-'d32;  // %
             default: ascii_num <= 'd0;
         endcase
 
@@ -261,7 +234,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             26: start_x <= 'd80;
             27: start_x <= 'd88;
             // 空行
-            28: start_x <= 'd32;
+            28: start_x <= 'd60;
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
             29: start_x <= 'd24;
             30: start_x <= 'd32;
@@ -298,12 +271,13 @@ always@(posedge sys_clk or negedge sys_rst_n)
             58: start_x <= 'd112;
             59: start_x <= 'd120;
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            60: start_x <= 'd40;
-            61: start_x <= 'd48;
-            62: start_x <= 'd56;
-            63: start_x <= 'd64;
-            64: start_x <= 'd72;
-            65: start_x <= 'd80;
+            60: start_x <= 'd36;
+            61: start_x <= 'd44;
+            62: start_x <= 'd52;
+            63: start_x <= 'd60;
+            64: start_x <= 'd68;
+            65: start_x <= 'd76;
+            66: start_x <= 'd84;
             // 默认情况下起始位置为0
             default: start_x <= 'd0;
         endcase
@@ -381,6 +355,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             63: start_y <= 'd144;
             64: start_y <= 'd144;
             65: start_y <= 'd144;
+            66: start_y <= 'd144;
             default: start_y <= 'd0;
         endcase
     else

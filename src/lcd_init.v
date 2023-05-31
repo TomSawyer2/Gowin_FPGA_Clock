@@ -27,7 +27,7 @@ module lcd_init
 //画笔颜色
 //localparam  BLUE          = 16'h001F,
 //            GREEN         = 16'h07E0,	  
-localparam    RED           = 16'hF800,  
+//            RED           = 16'hF800,  
 //            CYAN          = 16'h07FF,
 //            MAGENTA       = 16'hF81F,
 //            YELLOW        = 16'hFFE0,
@@ -37,7 +37,7 @@ localparam    RED           = 16'hF800,
 //            LIGHTCYAN     = 16'h87FF,
 //            LIGHTMAGENTA  = 16'hFC1F, 
 //            LIGHTYELLOW   = 16'hFFF0, 
-              DARKBLUE      = 16'h0010;
+//            DARKBLUE      = 16'h0010;
 //            DARKGREEN     = 16'h0400,
 //            DARKRED       = 16'h8000,
 //            DARKCYAN      = 16'h0410,
@@ -47,12 +47,11 @@ localparam    RED           = 16'hF800,
 //            LIGHTGRAY     = 16'hD69A, //灰色
 //            GRAY          = 16'h8410,
 //            DARKGRAY      = 16'h4208,
-//            BLACK         = 16'h0000, //黑色
+localparam            BLACK         = 16'h0000; //黑色
 //            BROWN         = 16'hA145,
 //            ORANGE        = 16'hFD20;
 
-localparam  CLRSCR1  = DARKBLUE;  
-localparam  CLRSCR2  = RED;  
+localparam  CLRSCR1  = BLACK;
 
 //----------------------------------------------------------------- 
 reg [6:0]   state;

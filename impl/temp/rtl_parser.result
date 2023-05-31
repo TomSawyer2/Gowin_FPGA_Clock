@@ -99,7 +99,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 115,
+    "InstLine" : 112,
     "InstName" : "H0",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/counter24.v",
     "ModuleLine" : 2,
@@ -107,7 +107,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 123,
+    "InstLine" : 120,
     "InstName" : "clockstatus_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/ClockStatus.v",
     "ModuleLine" : 1,
@@ -115,7 +115,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 137,
+    "InstLine" : 133,
     "InstName" : "dht11_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/dht11.v",
     "ModuleLine" : 3,
@@ -123,7 +123,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 164,
+    "InstLine" : 159,
     "InstName" : "lcd_init_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_init.v",
     "ModuleLine" : 7,
@@ -131,7 +131,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 181,
+    "InstLine" : 176,
     "InstName" : "muxcontrol_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/centerctrl.v",
     "ModuleLine" : 6,
@@ -139,7 +139,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 196,
+    "InstLine" : 191,
     "InstName" : "lcd_write_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_write.v",
     "ModuleLine" : 7,
@@ -147,7 +147,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 210,
+    "InstLine" : 205,
     "InstName" : "show_string_number_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/show_string_number_ctrl.v",
     "ModuleLine" : 16,
@@ -155,7 +155,7 @@
    },
    {
     "InstFile" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-    "InstLine" : 231,
+    "InstLine" : 226,
     "InstName" : "lcd_show_char_inst",
     "ModuleFile" : "F:/hardware_design/gowin_fpga_clock/src/lcd_show_char.v",
     "ModuleLine" : 6,

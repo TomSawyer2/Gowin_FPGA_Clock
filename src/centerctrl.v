@@ -18,8 +18,8 @@ module  muxcontrol
     output  reg              en_write      
 );
 
-always@(posedge sys_clk or negedge sys_rst_n)
-    if(!sys_rst_n)
+always @(posedge sys_clk or negedge sys_rst_n)
+    if (!sys_rst_n)
         data <= 'd0;
     else if(init_done == 1'b0)  //init_done=0未初试化完成
         data <= init_data;      //连接的数据是初始化数据
@@ -28,7 +28,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else
         data <= data;
 
-always@(posedge sys_clk or negedge sys_rst_n)
+always @(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
         en_write <= 'd0;
     else if(init_done == 1'b0)          //初始化未完

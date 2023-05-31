@@ -67,7 +67,7 @@ module KeyValue(
 				NO_KEY: begin
 					row_flag <= 1'b0;
 					KEY_ROW <= 4'b0000;	
-					if(key_flag != 4'b0000) begin
+					if (key_flag != 4'b0000) begin
 						state <= ROW_ONE;
 						KEY_ROW <= 4'b1110;
 					end
@@ -80,7 +80,7 @@ module KeyValue(
 					//因为由于消抖模块使得key_state很稳定
 					//不会因为KEY_ROW的短期变化而变化
 					//而KEY_COL则会伴随KEY_ROW实时变化
-					if(KEY_COL != 4'b1111) begin
+					if (KEY_COL != 4'b1111) begin
 						state <= NO_KEY;
 						rowIndex <= 4'd0;
 						row_flag <= 1'b1;
@@ -92,7 +92,7 @@ module KeyValue(
 				end
 				
 				ROW_TWO: begin
-					if(KEY_COL != 4'b1111) begin
+					if (KEY_COL != 4'b1111) begin
 						state <= NO_KEY;
 						rowIndex <= 4'd1;
 						row_flag <= 1'b1;
@@ -104,7 +104,7 @@ module KeyValue(
 				end
 				
 				ROW_THREE: begin
-					if(KEY_COL != 4'b1111) begin
+					if (KEY_COL != 4'b1111) begin
 						state <= NO_KEY;
 						rowIndex <= 4'd2;
 						row_flag <= 1'b1;
@@ -128,7 +128,7 @@ module KeyValue(
 	always @(posedge CLK or negedge nRST)
 		if(!nRST)
 			colIndex <= 2'd0;
-		else if(key_state != 4'b1111)
+		else if (key_state != 4'b1111)
 			case(key_state)
 				4'b1110: colIndex <= 2'd0;
 				4'b1101: colIndex <= 2'd1;
@@ -138,12 +138,12 @@ module KeyValue(
 	
 	//===========通过行列计算键值==========//
 	always @(posedge CLK or negedge nRST)
-		if(!nRST)
+		if (!nRST)
 			Value_en <= 1'b0;
-		else if(row_flag)
+		else if (row_flag)
 			begin
 				Value_en <= 1'b1;
-				KEY_Value <= 4*rowIndex + colIndex;
+				KEY_Value <= 4 * rowIndex + colIndex;
 			end
 		else
 			Value_en <= 1'b0;

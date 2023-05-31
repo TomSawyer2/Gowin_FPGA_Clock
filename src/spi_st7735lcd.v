@@ -43,7 +43,7 @@ wire    [8:0]   start_y             ;
 
 wire    [8:0]   show_char_data      ;
 
-assign  lcd_led = 1'b1;  //屏背光常亮
+assign lcd_led = 1'b1;  //屏背光常亮
 
 wire sys_clk;
 //Gowin_rPLL uPLL51M( .clkout(sys_clk), .clkin (xtal_clk) ); //测试速度时再开启。
@@ -63,28 +63,28 @@ KeyValue keyValue1(
 
 // 数字钟逻辑
 // 设置nCR复位信号默认为高电平
-wire nCR=1'b1;
+wire nCR = 1'b1;
 
 wire[7:0] Hour,Minute,Second;
 wire[7:0] newHour,newMinute,newSecond;
 wire MinL_EN,MinH_EN,Hour_EN;
 wire CP_1Hz;
-wire flag0,flag1;
 wire [3:0] Status;
 wire [7:0] alarmHour, alarmMinute;
+wire haveAlarm;
 
 Buzzer Buzzer1(
 	.CLK(sys_clk),
 	.nRST(sys_rst_n),
 	.BUZZER(BUZZER),
-    .Value_en(Hour == alarmHour && Minute == alarmMinute)
+    .Value_en(Hour == alarmHour && Minute == alarmMinute && haveAlarm)
 );
 
 Divider U0(.CLK_12(sys_clk),
            .nCR(nCR),
            .CP_1Hz(CP_1Hz)
 );
-defparam U0.N=25,U0.CLK_Freq=12000000,U0.OUT_Freq=1;
+defparam U0.N=25, U0.CLK_Freq=12000000, U0.OUT_Freq=1;
 counter10 S0(.Q(Second[3:0]),
              .nCR(nCR),
              .EN(1),
@@ -99,23 +99,20 @@ counter6 S1( .Q(Second[7:4]),
              .CP_1Hz(CP_1Hz));
 counter10 M0(.Q(Minute[3:0]),
              .nCR(nCR),
-             .EN(MinL_EN),
+             .EN(Second==8'h59),
              .newOnes(newMinute[3:0]),
              .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter6 M1(.Q(Minute[7:4]),
             .nCR(nCR),
-            .EN(MinH_EN),
+            .EN((Minute[3:0]==4'h9)&&(Second==8'h59)),
             .newTens(newMinute[7:4]),
             .Status(Status),
             .CP_1Hz(CP_1Hz));
-assign MinL_EN=flag0  ? 1 : (Second==8'h59);
-assign MinH_EN=(flag0 &&(Minute[3:0]==4'h9))||((Minute[3:0]==4'h9)&&(Second==8'h59));
-assign Hour_EN=flag1 ? 1 : ((Minute==8'h59)&&(Second==8'h59));
 counter24 H0(.cntH(Hour[7:4]),
              .cntL(Hour[3:0]),
              .nCR(nCR),
-             .Hour_EN(Hour_EN),
+             .Hour_EN((Minute==8'h59)&&(Second==8'h59)),
              .Status(Status),
              .newHour(newHour),
              .CP_1Hz(CP_1Hz));
@@ -128,13 +125,12 @@ ClockStatus clockstatus_inst (.clk(sys_clk),
                               .newMinute(newMinute),
                               .alarmHour(alarmHour),
                               .alarmMinute(alarmMinute),
+                              .haveAlarm(haveAlarm),
                               .Status(Status));
 
 // DHT11逻辑
-wire[7:0] temperature;
-wire[7:0] humidity;
-dht11 dht11_inst(.temp(temperature),
-                 .humi(humidity),
+wire[15:0] TempHumi;
+dht11 dht11_inst(.TempHumi(TempHumi),
                  .clk(sys_clk),
                  .rst_n(sys_rst_n),
                  .dht11(dht11));
@@ -215,9 +211,9 @@ show_string_number_ctrl  show_string_number_inst
     .Hour           (Hour           ) ,
     .Minute         (Minute         ) ,
     .Second         (Second         ) ,
-    .Temperature    (temperature    ) ,
-    .Humidity       (humidity       ) ,
+    .TempHumi       (TempHumi       ) ,
     .Status         (Status         ) ,
+    .haveAlarm      (haveAlarm      ) ,
 
     .en_size        (en_size        ) ,
     .show_char_flag (show_char_flag ) ,

@@ -6,7 +6,7 @@
 
 -mod_name ascii_pROM
 -file_name ascii_prom
--path D:/BaiduNetdiskDownload/spi_st7735lcd_demoNano/src/gowin_prom/
+-path F:/hardware_design/gowin_fpga_clock/src/gowin_prom/
 -type RAM_ROM
 -file_type vlg
 -pROM true
@@ -14,4 +14,4 @@
 -width 8
 -read_mode bypass
 -reset_mode sync
--init_file D:\BaiduNetdiskDownload\spi_st7735lcd_demoNano\src\AsciiROM_8x2660.mi
+-init_file F:\hardware_design\gowin_fpga_clock\src\AsciiROM_8x2660.mi
