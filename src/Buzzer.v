@@ -2,11 +2,13 @@ module Buzzer(
     input CLK,
 	input nRST,
     output reg BUZZER,
-    input Value_en
+    input shouldTick,
+    input isTimeUp
 );
 
 parameter TIME_500MS = 24'd11999999;
-parameter DO = 18'd91603 ;        //262
+parameter ALARM = 14'd12000 ;        //262
+parameter TICK = 18'd91603;
 // FPGA上LUT数量不够，必须注释掉
 // parameter RE = 18'd81631 ;       //294
 // parameter MI = 18'd72726 ;       //330
@@ -33,12 +35,13 @@ always @(posedge CLK or negedge nRST) begin
         end
     end
 end
+
 always @(posedge CLK or negedge nRST) 
     if (!nRST)
         cnt_500ms <= 1'b0;
     else if((cnt_500ms == 1) && (cnt == TIME_500MS))
         cnt_500ms <= 1'b0;
-    else if(Value_en)
+    else if(shouldTick || isTimeUp)
         cnt_500ms <= cnt_500ms + 1'b1;
     else 
         cnt_500ms <= cnt_500ms;
@@ -80,7 +83,10 @@ always @(posedge CLK or negedge nRST) begin
 //              
 //                default: freq_data <= 1'b0;
 //            endcase
-            freq_data <= DO;
+            if (isTimeUp) 
+                freq_data <= ALARM;
+            else if (shouldTick)
+                freq_data <= TICK;
         end else begin
             freq_data <= 1'b0;
         end

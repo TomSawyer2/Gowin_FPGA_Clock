@@ -10,7 +10,7 @@ reg key_a, key_b;
 reg en_cnt, cnt_full;
 reg [3:0]state;
 // 想办法使用外部的DIVIDER模块分出的1Hz频率，内部不要再实现一遍，太浪费LUT资源
-reg [12:0]cnt;
+reg [11:0]cnt;
 wire flag_H2L, flag_L2H;
 
 localparam
@@ -47,7 +47,7 @@ always @(posedge CLK or negedge nRST)
 always @(posedge CLK or negedge nRST)
 	if(!nRST)
 		cnt_full <= 1'b0;
-	else if(cnt == 13'd8191)
+	else if(cnt == 12'd4095)
 		cnt_full <= 1'b1;
 	else
 		cnt_full <= 1'b0;

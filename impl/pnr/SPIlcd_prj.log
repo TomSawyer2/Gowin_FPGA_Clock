@@ -12,6 +12,7 @@ Running routing......
 [60%] Routing Phase 0 completed
 [70%] Routing Phase 1 completed
 [80%] Routing Phase 2 completed
+WARN  (PR1014) : Generic routing resource will be used to clock signal 'sys_rst_n_d' by the specified constraint. And then it may lead to the excessive delay or skew
 [90%] Routing Phase 3 completed
 Running timing analysis......
 [95%] Timing analysis completed
@@ -25,5 +26,5 @@ Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.pin.html"
 Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.rpt.html" completed
 Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.rpt.txt" completed
 Generate file "F:\hardware_design\gowin_fpga_clock\impl\pnr\SPIlcd_prj.tr.html" completed
-Wed May 31 23:06:53 2023
+Fri Jun 02 08:57:18 2023
 

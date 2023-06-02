@@ -72,12 +72,14 @@ wire CP_1Hz;
 wire [3:0] Status;
 wire [7:0] alarmHour, alarmMinute;
 wire haveAlarm;
+wire shouldTick;
 
 Buzzer Buzzer1(
 	.CLK(sys_clk),
 	.nRST(sys_rst_n),
 	.BUZZER(BUZZER),
-    .Value_en(Hour == alarmHour && Minute == alarmMinute && haveAlarm)
+    .shouldTick(shouldTick),
+    .isTimeUp(Hour == alarmHour && Minute == alarmMinute && haveAlarm)
 );
 
 Divider U0(.CLK_12(sys_clk),
@@ -126,6 +128,7 @@ ClockStatus clockstatus_inst (.clk(sys_clk),
                               .alarmHour(alarmHour),
                               .alarmMinute(alarmMinute),
                               .haveAlarm(haveAlarm),
+                              .shouldTick(shouldTick),
                               .Status(Status));
 
 // DHT11逻辑

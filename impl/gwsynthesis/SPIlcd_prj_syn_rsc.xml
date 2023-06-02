@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module name="spi_st7735lcd" Alu="16" Lut="2">
     <SubModule name="keyValue1" Register="19" Lut="27">
-        <SubModule name="KeyPressu0" Register="23" Lut="35"/>
-        <SubModule name="KeyPressu1" Register="23" Lut="35"/>
-        <SubModule name="KeyPressu2" Register="23" Lut="35"/>
-        <SubModule name="KeyPressu3" Register="23" Lut="35"/>
+        <SubModule name="KeyPressu0" Register="22" Lut="33"/>
+        <SubModule name="KeyPressu1" Register="22" Lut="33"/>
+        <SubModule name="KeyPressu2" Register="22" Lut="33"/>
+        <SubModule name="KeyPressu3" Register="22" Lut="33"/>
     </SubModule>
-    <SubModule name="Buzzer1" Register="46" Lut="92"/>
+    <SubModule name="Buzzer1" Register="48" Lut="98"/>
     <SubModule name="U0" Register="26" Alu="24" Lut="8"/>
-    <SubModule name="S0" Register="4" Lut="6"/>
-    <SubModule name="S1" Register="4" Lut="5"/>
+    <SubModule name="S0" Register="4" Lut="5"/>
+    <SubModule name="S1" Register="4" Lut="6"/>
     <SubModule name="M0" Register="4" Lut="9"/>
     <SubModule name="M1" Register="4" Lut="9"/>
     <SubModule name="H0" Register="8" Lut="20"/>
-    <SubModule name="clockstatus_inst" Register="33" Lut="34"/>
-    <SubModule name="dht11_inst" Register="115" Alu="31" Lut="136"/>
-    <SubModule name="lcd_init_inst" Register="68" Lut="222"/>
+    <SubModule name="clockstatus_inst" Register="36" Lut="49"/>
+    <SubModule name="dht11_inst" Register="115" Alu="31" Lut="137"/>
+    <SubModule name="lcd_init_inst" Register="68" Lut="232"/>
     <SubModule name="muxcontrol_inst" Register="10" Lut="12"/>
     <SubModule name="lcd_write_inst" Register="19" Lut="32"/>
-    <SubModule name="show_string_number_inst" Register="53" Alu="6" Lut="176"/>
-    <SubModule name="lcd_show_char_inst" Register="53" Alu="9" Lut="90">
+    <SubModule name="show_string_number_inst" Register="53" Alu="6" Lut="175"/>
+    <SubModule name="lcd_show_char_inst" Register="53" Alu="9" Lut="95">
         <SubModule name="your_instance_name" Bsram="2"/>
     </SubModule>
 </Module>

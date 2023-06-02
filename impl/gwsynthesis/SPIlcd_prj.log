@@ -20,13 +20,13 @@ Compiling module 'spi_st7735lcd'("F:\hardware_design\gowin_fpga_clock\src\spi_st
 Compiling module 'KeyValue'("F:\hardware_design\gowin_fpga_clock\src\KeyValue.v":1)
 Compiling module 'KeyPress'("F:\hardware_design\gowin_fpga_clock\src\KeyPress.v":1)
 Compiling module 'Buzzer'("F:\hardware_design\gowin_fpga_clock\src\Buzzer.v":1)
-WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("F:\hardware_design\gowin_fpga_clock\src\Buzzer.v":32)
+WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("F:\hardware_design\gowin_fpga_clock\src\Buzzer.v":34)
 Compiling module 'Divider(CLK_Freq=12000000)'("F:\hardware_design\gowin_fpga_clock\src\Divider.v":2)
 Compiling module 'counter10'("F:\hardware_design\gowin_fpga_clock\src\counter10.v":2)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'EN'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":90)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newOnes'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":91)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'EN'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":92)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newOnes'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":93)
 Compiling module 'counter6'("F:\hardware_design\gowin_fpga_clock\src\counter6.v":2)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newTens'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":97)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newTens'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":99)
 Compiling module 'counter24'("F:\hardware_design\gowin_fpga_clock\src\counter24.v":2)
 Compiling module 'ClockStatus'("F:\hardware_design\gowin_fpga_clock\src\ClockStatus.v":1)
 Compiling module 'dht11'("F:\hardware_design\gowin_fpga_clock\src\dht11.v":3)
@@ -41,6 +41,7 @@ Compiling module 'ascii_pROM'("F:\hardware_design\gowin_fpga_clock\src\gowin_pro
 NOTE  (EX0101) : Current top module is "spi_st7735lcd"
 [5%] Running netlist conversion ...
 Running device independent optimization ...
+WARN  (DI0003) : Latch inferred for net 'haveAlarm';We do not recommend the use of latches in FPGA designs, as they may lead to timing problems("F:\hardware_design\gowin_fpga_clock\src\ClockStatus.v":89)
 [10%] Optimizing Phase 0 completed
 [15%] Optimizing Phase 1 completed
 [25%] Optimizing Phase 2 completed
