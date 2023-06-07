@@ -211,25 +211,25 @@ module key_board
 	else if(Key_Flag_r)  // 先判断，按键是否按下成功
 	begin
 		case (Key_Value_tmp)
-			8'b1110_0001 : Key_Value <= 4'd0;
-			8'b1110_0010 : Key_Value <= 4'd1;
-			8'b1110_0100 : Key_Value <= 4'd2;
-			8'b1110_1000 : Key_Value <= 4'd3;
+			8'b1110_0001 : Key_Value <= 4'd1;
+			8'b1110_0010 : Key_Value <= 4'd2;
+			8'b1110_0100 : Key_Value <= 4'd3;
+			8'b1110_1000 : Key_Value <= 4'd4;
 			
-			8'b1101_0001 : Key_Value <= 4'd4;
-			8'b1101_0010 : Key_Value <= 4'd5;
-			8'b1101_0100 : Key_Value <= 4'd6;
-			8'b1101_1000 : Key_Value <= 4'd7;
+			8'b1101_0001 : Key_Value <= 4'd5;
+			8'b1101_0010 : Key_Value <= 4'd6;
+			8'b1101_0100 : Key_Value <= 4'd7;
+			8'b1101_1000 : Key_Value <= 4'd8;
 			
-			8'b1011_0001 : Key_Value <= 4'd8;
-			8'b1011_0010 : Key_Value <= 4'd9;
-			8'b1011_0100 : Key_Value <= 4'd10;
-			8'b1011_1000 : Key_Value <= 4'd11;
+			8'b1011_0001 : Key_Value <= 4'd9;
+			8'b1011_0010 : Key_Value <= 4'd0;
+			8'b1011_0100 : Key_Value <= 4'd11;
+			8'b1011_1000 : Key_Value <= 4'd12;
 			
-			8'b0111_0001 : Key_Value <= 4'd12;
-			8'b0111_0010 : Key_Value <= 4'd13;
-			8'b0111_0100 : Key_Value <= 4'd14;
-			8'b0111_1000 : Key_Value <= 4'd15; 
+			8'b0111_0001 : Key_Value <= 4'd13;
+			8'b0111_0010 : Key_Value <= 4'd14;
+			8'b0111_0100 : Key_Value <= 4'd15;
+			8'b0111_1000 : Key_Value <= 4'd0; // F键不需要
 			default: Key_Value <= Key_Value ;
 		endcase
 	end

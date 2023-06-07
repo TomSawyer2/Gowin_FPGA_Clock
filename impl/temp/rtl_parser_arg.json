@@ -13,14 +13,6 @@
    "Type" : "verilog"
   },
   {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/KeyPress.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/KeyValue.v",
-   "Type" : "verilog"
-  },
-  {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/centerctrl.v",
    "Type" : "verilog"
   },
@@ -45,6 +37,10 @@
    "Type" : "verilog"
   },
   {
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/key_board.v",
+   "Type" : "verilog"
+  },
+  {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/lcd_init.v",
    "Type" : "verilog"
   },
@@ -62,10 +58,6 @@
   },
   {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
-   "Type" : "verilog"
-  },
-  {
-   "Path" : "F:/hardware_design/gowin_fpga_clock/src/key_board.v",
    "Type" : "verilog"
   }
  ],

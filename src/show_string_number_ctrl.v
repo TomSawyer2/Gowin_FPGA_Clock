@@ -23,7 +23,7 @@ module show_string_number_ctrl
     input       wire    [7:0]   Minute              ,
     input       wire    [7:0]   Second              ,
     input       wire    [15:0]  TempHumi            ,
-    input       wire    [3:0]   Status              ,
+    input       wire    [4:0]   Status              ,
     input       wire            haveAlarm           ,
 
     output      wire            en_size             ,
@@ -140,11 +140,11 @@ always@(posedge sys_clk or negedge sys_rst_n)
             // 空行
             19: ascii_num <= 'd32-'d32;  // 
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
-            20: ascii_num <= (Status == 4'd1 || Status == 4'd5) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
-            21: ascii_num <= (Status == 4'd2 || Status == 4'd6) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
+            20: ascii_num <= (Status == 5'd1 || Status == 5'd2 || Status == 5'd9) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
+            21: ascii_num <= (Status == 5'd3 || Status == 5'd4 || Status == 5'd10) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
             22: ascii_num <= 'd58-'d32;  // :
-            23: ascii_num <= (Status == 4'd3 || Status == 4'd7) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
-            24: ascii_num <= (Status == 4'd4 || Status == 4'd8) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
+            23: ascii_num <= (Status == 5'd5 || Status == 5'd6 || Status == 5'd11) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
+            24: ascii_num <= (Status == 5'd7 || Status == 5'd8 || Status == 5'd12) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
             25: ascii_num <= 'd58-'d32;  // :
             26: ascii_num <= decimal_second_tens+'d16; // 2
             27: ascii_num <= decimal_second_ones+'d16; // 2
@@ -160,7 +160,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             35: ascii_num <= 'd54-'d32;  // 6
             36: ascii_num <= 'd47-'d32;  // /
             37: ascii_num <= 'd48-'d32;  // 0
-            38: ascii_num <= 'd50-'d32;  // 2
+            38: ascii_num <= 'd57-'d32;  // 9
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
             39: ascii_num <= 'd70-'d32;  // F
             40: ascii_num <= 'd114-'d32; // r

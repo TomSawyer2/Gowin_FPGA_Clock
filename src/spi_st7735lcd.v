@@ -51,7 +51,7 @@ assign sys_clk = xtal_clk;
 
 // 键盘和蜂鸣器逻辑
 wire Value_en;
-wire [3:0] KEY_Value;
+wire [4:0] KEY_Value;
 key_board key1(
 	.Clk(sys_clk),
 	.Rst_n(sys_rst_n),
@@ -77,7 +77,7 @@ wire[7:0] Hour,Minute,Second;
 wire[7:0] newHour,newMinute,newSecond;
 wire MinL_EN,MinH_EN,Hour_EN;
 wire CP_1Hz;
-wire [3:0] Status;
+wire [4:0] Status;
 wire [7:0] alarmHour, alarmMinute;
 wire haveAlarm;
 wire shouldTick;
@@ -88,7 +88,7 @@ Buzzer Buzzer1(
     .CP_1Hz(CP_1Hz),
 	.BUZZER(BUZZER),
     .shouldTick(shouldTick),
-    .isTimeUp(Hour == alarmHour && Minute == alarmMinute && haveAlarm)
+    .isTimeUp((Hour == alarmHour) && (Minute == alarmMinute) && haveAlarm)
 );
 
 Divider U0(.CLK_12(sys_clk),
@@ -101,23 +101,27 @@ counter10 S0(.Q(Second[3:0]),
              .EN(1),
              .newOnes(0),
              .Status(Status),
+             .isMinute(0),
              .CP_1Hz(CP_1Hz));
 counter6 S1( .Q(Second[7:4]),
              .nCR(nCR),
              .EN((Second[3:0]==4'h9)),
              .newTens(0),
+             .isMinute(0),
              .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter10 M0(.Q(Minute[3:0]),
              .nCR(nCR),
              .EN(Second==8'h59),
              .newOnes(newMinute[3:0]),
+             .isMinute(1),
              .Status(Status),
              .CP_1Hz(CP_1Hz));
 counter6 M1(.Q(Minute[7:4]),
             .nCR(nCR),
             .EN((Minute[3:0]==4'h9)&&(Second==8'h59)),
             .newTens(newMinute[7:4]),
+            .isMinute(1),
             .Status(Status),
             .CP_1Hz(CP_1Hz));
 counter24 H0(.cntH(Hour[7:4]),
@@ -132,6 +136,9 @@ ClockStatus clockstatus_inst (.clk(sys_clk),
                               .rstn(sys_rst_n),
                               .Value_en(Value_en),
                               .KEY_Value(KEY_Value),
+                              .Hour(Hour),
+                              .Minute(Minute),
+                              .Second(Second),
                               .newHour(newHour),
                               .newMinute(newMinute),
                               .alarmHour(alarmHour),

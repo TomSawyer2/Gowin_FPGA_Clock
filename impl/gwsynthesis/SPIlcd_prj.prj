@@ -7,20 +7,18 @@
         <File path="F:\hardware_design\gowin_fpga_clock\src\Buzzer.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\ClockStatus.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\Divider.v" type="verilog"/>
-        <File path="F:\hardware_design\gowin_fpga_clock\src\KeyPress.v" type="verilog"/>
-        <File path="F:\hardware_design\gowin_fpga_clock\src\KeyValue.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\centerctrl.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\counter10.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\counter24.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\counter6.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\dht11.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\gowin_prom\ascii_pROM.v" type="verilog"/>
+        <File path="F:\hardware_design\gowin_fpga_clock\src\key_board.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\lcd_init.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\lcd_write.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v" type="verilog"/>
-        <File path="F:\hardware_design\gowin_fpga_clock\src\key_board.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>
