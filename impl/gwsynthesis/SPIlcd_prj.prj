@@ -20,6 +20,7 @@
         <File path="F:\hardware_design\gowin_fpga_clock\src\lcd_write.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v" type="verilog"/>
         <File path="F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v" type="verilog"/>
+        <File path="F:\hardware_design\gowin_fpga_clock\src\key_board.v" type="verilog"/>
     </FileList>
     <OptionList>
         <Option type="disable_insert_pad" value="0"/>

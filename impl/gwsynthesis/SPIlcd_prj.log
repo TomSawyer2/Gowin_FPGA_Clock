@@ -16,17 +16,16 @@ Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v'
 Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\lcd_write.v'
 Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v'
 Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v'
+Analyzing Verilog file 'F:\hardware_design\gowin_fpga_clock\src\key_board.v'
 Compiling module 'spi_st7735lcd'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":16)
-Compiling module 'KeyValue'("F:\hardware_design\gowin_fpga_clock\src\KeyValue.v":1)
-Compiling module 'KeyPress'("F:\hardware_design\gowin_fpga_clock\src\KeyPress.v":1)
+Compiling module 'key_board'("F:\hardware_design\gowin_fpga_clock\src\key_board.v":1)
 Compiling module 'Buzzer'("F:\hardware_design\gowin_fpga_clock\src\Buzzer.v":1)
-WARN  (EX3791) : Expression size 26 truncated to fit in target size 25("F:\hardware_design\gowin_fpga_clock\src\Buzzer.v":34)
 Compiling module 'Divider(CLK_Freq=12000000)'("F:\hardware_design\gowin_fpga_clock\src\Divider.v":2)
 Compiling module 'counter10'("F:\hardware_design\gowin_fpga_clock\src\counter10.v":2)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'EN'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":92)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newOnes'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":93)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 1 for port 'EN'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":101)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newOnes'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":102)
 Compiling module 'counter6'("F:\hardware_design\gowin_fpga_clock\src\counter6.v":2)
-WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newTens'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":99)
+WARN  (EX3670) : Actual bit length 32 differs from formal bit length 4 for port 'newTens'("F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v":108)
 Compiling module 'counter24'("F:\hardware_design\gowin_fpga_clock\src\counter24.v":2)
 Compiling module 'ClockStatus'("F:\hardware_design\gowin_fpga_clock\src\ClockStatus.v":1)
 Compiling module 'dht11'("F:\hardware_design\gowin_fpga_clock\src\dht11.v":3)

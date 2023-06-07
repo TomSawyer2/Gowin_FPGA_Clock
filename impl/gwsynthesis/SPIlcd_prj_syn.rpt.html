@@ -71,6 +71,7 @@ F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v<br>
 F:\hardware_design\gowin_fpga_clock\src\lcd_write.v<br>
 F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v<br>
 F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
+F:\hardware_design\gowin_fpga_clock\src\key_board.v<br>
 </td>
 </tr>
 <tr>
@@ -91,7 +92,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label">Created Time</td>
-<td>Fri Jun 02 08:57:15 2023
+<td>Wed Jun 07 15:12:41 2023
 </td>
 </tr>
 <tr>
@@ -107,11 +108,11 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label">Synthesis Process</td>
-<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.281s, Elapsed time = 0h 0m 0.242s, Peak memory usage = 156.715MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.187s, Elapsed time = 0h 0m 0.161s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.062s, Elapsed time = 0h 0m 0.063s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.101s, Peak memory usage = 156.715MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.013s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.007s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.005s, Peak memory usage = 156.715MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.14s, Elapsed time = 0h 0m 0.14s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.032s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.046s, Elapsed time = 0h 0m 0.035s, Peak memory usage = 156.715MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s, Peak memory usage = 160.086MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.171s, Elapsed time = 0h 0m 0.179s, Peak memory usage = 160.086MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.062s, Elapsed time = 0h 0m 0.057s, Peak memory usage = 160.086MB<br/></td>
+<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.281s, Elapsed time = 0h 0m 0.335s, Peak memory usage = 110.262MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.14s, Elapsed time = 0h 0m 0.149s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.062s, Elapsed time = 0h 0m 0.057s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.092s, Peak memory usage = 110.262MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.013s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.004s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.006s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.004s, Peak memory usage = 110.262MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.125s, Elapsed time = 0h 0m 0.129s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.028s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.018s, Peak memory usage = 110.262MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 4s, Elapsed time = 0h 0m 4s, Peak memory usage = 124.766MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.218s, Elapsed time = 0h 0m 0.188s, Peak memory usage = 124.766MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.084s, Peak memory usage = 124.766MB<br/></td>
 </tr>
 <tr>
 <td class="label">Total Time and Memory Usage</td>
-<td>CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s, Peak memory usage = 160.086MB</td>
+<td>CPU time = 0h 0m 5s, Elapsed time = 0h 0m 5s, Peak memory usage = 124.766MB</td>
 </tr>
 </table>
 <h1><a name="resource">Resource</a></h1>
@@ -143,15 +144,15 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label"><b>Register </b></td>
-<td>559</td>
+<td>486</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFF</td>
-<td>1</td>
+<td>2</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFE</td>
-<td>62</td>
+<td>56</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFR</td>
@@ -163,19 +164,19 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFP</td>
-<td>13</td>
-</tr>
-<tr>
-<td class="label">&nbsp&nbsp&nbsp&nbspDFFPE</td>
 <td>4</td>
 </tr>
 <tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFPE</td>
+<td>9</td>
+</tr>
+<tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFC</td>
-<td>264</td>
+<td>195</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDFFCE</td>
-<td>161</td>
+<td>166</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspDLNCE</td>
@@ -183,19 +184,19 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label"><b>LUT </b></td>
-<td>1038</td>
+<td>916</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT2</td>
-<td>139</td>
+<td>127</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT3</td>
-<td>300</td>
+<td>246</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp&nbsp&nbspLUT4</td>
-<td>599</td>
+<td>543</td>
 </tr>
 <tr>
 <td class="label"><b>ALU </b></td>
@@ -231,13 +232,13 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label">Logic</td>
-<td>1134(1048 LUTs, 86 ALUs) / 1152</td>
-<td>98%</td>
+<td>1012(926 LUTs, 86 ALUs) / 1152</td>
+<td>88%</td>
 </tr>
 <tr>
 <td class="label">Register</td>
-<td>559 / 945</td>
-<td>59%</td>
+<td>486 / 945</td>
+<td>51%</td>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as Latch</td>
@@ -246,8 +247,8 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 </tr>
 <tr>
 <td class="label">&nbsp&nbsp--Register as FF</td>
-<td>558 / 945</td>
-<td>59%</td>
+<td>485 / 945</td>
+<td>51%</td>
 </tr>
 <tr>
 <td class="label">BSRAM</td>
@@ -344,7 +345,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>3</td>
 <td>clk_1M</td>
 <td>50.0(MHz)</td>
-<td>101.4(MHz)</td>
+<td>102.0(MHz)</td>
 <td>7</td>
 <td>TOP</td>
 </tr>
@@ -352,7 +353,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>4</td>
 <td>sys_rst_n_d</td>
 <td>50.0(MHz)</td>
-<td>246.4(MHz)</td>
+<td>238.5(MHz)</td>
 <td>2</td>
 <td>TOP</td>
 </tr>
@@ -413,7 +414,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>0.000</td>
 <td>tCL</td>
 <td>FF</td>
-<td>21</td>
+<td>19</td>
 <td>sys_rst_n_ibuf/O</td>
 </tr>
 <tr>
@@ -585,7 +586,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>0.000</td>
 <td>tCL</td>
 <td>FF</td>
-<td>21</td>
+<td>19</td>
 <td>sys_rst_n_ibuf/O</td>
 </tr>
 <tr>
@@ -757,7 +758,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>0.000</td>
 <td>tCL</td>
 <td>FF</td>
-<td>21</td>
+<td>19</td>
 <td>sys_rst_n_ibuf/O</td>
 </tr>
 <tr>
@@ -929,7 +930,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>0.000</td>
 <td>tCL</td>
 <td>FF</td>
-<td>21</td>
+<td>19</td>
 <td>sys_rst_n_ibuf/O</td>
 </tr>
 <tr>
@@ -1101,7 +1102,7 @@ F:\hardware_design\gowin_fpga_clock\src\spi_st7735lcd.v<br>
 <td>0.000</td>
 <td>tCL</td>
 <td>FF</td>
-<td>21</td>
+<td>19</td>
 <td>sys_rst_n_ibuf/O</td>
 </tr>
 <tr>

@@ -17,7 +17,7 @@ module  spi_st7735lcd
 (
     input           xtal_clk      ,
     input           sys_rst_n     ,
-    input [3:0]     key_col       ,
+    input [3:0]     key_row       ,
     inout           dht11         ,
     
     output          lcd_rst       ,
@@ -26,7 +26,7 @@ module  spi_st7735lcd
     output          lcd_mosi      ,
     output          lcd_cs        ,
     output          lcd_led       ,
-    output [3:0]    key_row       ,
+    output [3:0]    key_col       ,
     output          BUZZER        
 );
 wire    [8:0]   data;   
@@ -52,14 +52,22 @@ assign sys_clk = xtal_clk;
 // 键盘和蜂鸣器逻辑
 wire Value_en;
 wire [3:0] KEY_Value;
-KeyValue keyValue1(
-	.CLK(sys_clk),
-	.nRST(sys_rst_n),
-	.KEY_ROW(key_row),
-	.KEY_COL(key_col),
-	.KEY_Value(KEY_Value),
-	.Value_en(Value_en)
+key_board key1(
+	.Clk(sys_clk),
+	.Rst_n(sys_rst_n),
+	.Key_Board_Row_i(key_row),
+	.Key_flag(Value_en),
+	.Key_Value(KEY_Value),
+	.Key_Board_Col_o(key_col)
 );
+//KeyValue keyValue1(
+//	.CLK(sys_clk),
+//	.nRST(sys_rst_n),
+//	.KEY_ROW(key_row),
+//	.KEY_COL(key_col),
+//	.KEY_Value(KEY_Value),
+//	.Value_en(Value_en)
+//);
 
 // 数字钟逻辑
 // 设置nCR复位信号默认为高电平
@@ -77,6 +85,7 @@ wire shouldTick;
 Buzzer Buzzer1(
 	.CLK(sys_clk),
 	.nRST(sys_rst_n),
+    .CP_1Hz(CP_1Hz),
 	.BUZZER(BUZZER),
     .shouldTick(shouldTick),
     .isTimeUp(Hour == alarmHour && Minute == alarmMinute && haveAlarm)

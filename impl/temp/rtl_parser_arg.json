@@ -63,6 +63,10 @@
   {
    "Path" : "F:/hardware_design/gowin_fpga_clock/src/spi_st7735lcd.v",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "F:/hardware_design/gowin_fpga_clock/src/key_board.v",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

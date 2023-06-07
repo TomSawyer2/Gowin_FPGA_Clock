@@ -1,6 +1,7 @@
 module Buzzer(
     input CLK,
 	input nRST,
+    input CP_1Hz,
     output reg BUZZER,
     input shouldTick,
     input isTimeUp
@@ -18,41 +19,41 @@ parameter TICK = 18'd91603;
 // parameter XI = 18'd48581 ;         //494
 
 
-reg [24:0] cnt = 0;
+//reg [24:0] cnt = 0;
 reg cnt_500ms = 0;
 reg [17:0] freq_cnt = 0;
 reg [17:0] freq_data = 0;
 wire [16:0] duty_data;
 
-always @(posedge CLK or negedge nRST) begin
-    if (!nRST) begin
-        cnt <= 0;
-    end else begin
-        if (cnt == TIME_500MS) begin
-            cnt <= 0;
-        end else begin
-            cnt <= cnt + 1;
-        end
-    end
-end
+//always @(posedge CLK or negedge nRST) begin
+ //   if (!nRST) begin
+//       cnt <= 0;
+ //   end else begin
+ //       if (cnt == TIME_500MS) begin
+//            cnt <= 0;
+ //       end else begin
+ //           cnt <= cnt + 1;
+   //     end
+  //  end
+//end
 
 always @(posedge CLK or negedge nRST) 
-    if (!nRST)
+   if (!nRST)
         cnt_500ms <= 1'b0;
-    else if((cnt_500ms == 1) && (cnt == TIME_500MS))
+    else if((cnt_500ms == 1) && (CP_1Hz==1'b1))
         cnt_500ms <= 1'b0;
     else if(shouldTick || isTimeUp)
         cnt_500ms <= cnt_500ms + 1'b1;
-    else 
-        cnt_500ms <= cnt_500ms;
+   else 
+      cnt_500ms <= cnt_500ms;
 
 always @(posedge CLK or negedge nRST) begin
     if(!nRST) begin
         freq_cnt <= 18'd0;
     end else begin
-        if((freq_cnt == freq_data) || (cnt == TIME_500MS)) begin
-            freq_cnt <= 18'd0;
-        end else begin
+        if((freq_cnt == freq_data) || (CP_1Hz==1'b1)) begin
+           freq_cnt <= 18'd0;
+       end else begin
             freq_cnt <= freq_cnt + 1'b1;
         end
     end
