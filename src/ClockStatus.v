@@ -11,6 +11,8 @@ module ClockStatus(
     output reg [7:0] alarmHour,
     output reg [7:0] alarmMinute,
     output reg haveAlarm,
+    output reg haveAlarmTemp,
+    output reg [7:0] alarmTemp,
     output reg shouldTick,
     output reg [4:0] Status
 );
@@ -18,6 +20,7 @@ module ClockStatus(
 // 1输入小时十位 2 设置小时十位 3调小时个位 4设置小时个位
 // 5调分钟十位 6设置分钟十位 7调分钟个位 8设置分钟十位 
 // 9调闹钟时十位 10调闹钟时个位 11调闹钟分十位 12调闹钟分个位
+// 13调温度十位 14调温度个位
 always @(posedge clk or negedge rstn) begin
     if (!rstn) begin
         Status <= 5'd0;
@@ -25,6 +28,7 @@ always @(posedge clk or negedge rstn) begin
         alarmHour <= 'd0;
         alarmMinute <= 'd0;
         haveAlarm <= ~shouldTick;
+        haveAlarmTemp <= ~shouldTick;
     end else begin
         if (Value_en) begin
             case(Status)
@@ -44,6 +48,12 @@ always @(posedge clk or negedge rstn) begin
                     // E键开关声音
                     end else if (KEY_Value == 4'd15) begin
                         shouldTick <= ~shouldTick;
+                    // F键设置报警温度
+                    end else if (KEY_Value == 4'd10) begin
+                        if (haveAlarmTemp) 
+                            haveAlarmTemp <= 1'b0;
+                        else 
+                            Status <= 5'd13;
                     end
                 end
                 
@@ -85,6 +95,17 @@ always @(posedge clk or negedge rstn) begin
                 5'd12: begin
                     alarmMinute <= {alarmMinute[7:4], KEY_Value};
                     haveAlarm <= 1'b1;
+                    Status <= 5'd0;
+                end
+
+                5'd13: begin
+                    alarmTemp <= {KEY_Value, 4'd0000};
+                    Status <= 5'd14;
+                end
+
+                5'd14: begin
+                    alarmTemp <= {alarmTemp[7:4], KEY_Value};
+                    haveAlarmTemp <= 1'b1;
                     Status <= 5'd0;
                 end
             endcase

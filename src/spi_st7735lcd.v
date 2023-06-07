@@ -81,6 +81,9 @@ wire [4:0] Status;
 wire [7:0] alarmHour, alarmMinute;
 wire haveAlarm;
 wire shouldTick;
+wire haveAlarmTemp;
+wire [7:0] alarmTemp;
+wire [15:0] TempHumi;
 
 Buzzer Buzzer1(
 	.CLK(sys_clk),
@@ -88,7 +91,7 @@ Buzzer Buzzer1(
     .CP_1Hz(CP_1Hz),
 	.BUZZER(BUZZER),
     .shouldTick(shouldTick),
-    .isTimeUp((Hour == alarmHour) && (Minute == alarmMinute) && haveAlarm)
+    .isTimeUp(((Hour == alarmHour) && (Minute == alarmMinute) && haveAlarm) || (alarmTemp[7:4] == TempHumi[15:8]/10 && alarmTemp[3:0] == TempHumi[15:8]%10 && haveAlarmTemp))
 );
 
 Divider U0(.CLK_12(sys_clk),
@@ -145,10 +148,11 @@ ClockStatus clockstatus_inst (.clk(sys_clk),
                               .alarmMinute(alarmMinute),
                               .haveAlarm(haveAlarm),
                               .shouldTick(shouldTick),
+                              .haveAlarmTemp(haveAlarmTemp),
+                              .alarmTemp(alarmTemp),
                               .Status(Status));
 
 // DHT11逻辑
-wire[15:0] TempHumi;
 dht11 dht11_inst(.TempHumi(TempHumi),
                  .clk(sys_clk),
                  .rst_n(sys_rst_n),
@@ -233,6 +237,7 @@ show_string_number_ctrl  show_string_number_inst
     .TempHumi       (TempHumi       ) ,
     .Status         (Status         ) ,
     .haveAlarm      (haveAlarm      ) ,
+    .haveAlarmTemp  (haveAlarmTemp  ) ,
 
     .en_size        (en_size        ) ,
     .show_char_flag (show_char_flag ) ,

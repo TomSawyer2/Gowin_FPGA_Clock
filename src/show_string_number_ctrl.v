@@ -25,6 +25,7 @@ module show_string_number_ctrl
     input       wire    [15:0]  TempHumi            ,
     input       wire    [4:0]   Status              ,
     input       wire            haveAlarm           ,
+    input       wire            haveAlarmTemp       ,
 
     output      wire            en_size             ,
     output      reg             show_char_flag      ,
@@ -149,30 +150,30 @@ always@(posedge sys_clk or negedge sys_rst_n)
             26: ascii_num <= (Status == 5'd5 || Status == 5'd6 || Status == 5'd11) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
             27: ascii_num <= (Status == 5'd7 || Status == 5'd8 || Status == 5'd12) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
             28: ascii_num <= 'd58-'d32;  // :
-            29: ascii_num <= decimal_second_tens+'d16; // 2
-            30: ascii_num <= decimal_second_ones+'d16; // 2
+            29: ascii_num <= (Status == 5'd13) ? 'd95 - 'd32 :decimal_second_tens+'d16; // 2
+            30: ascii_num <= (Status == 5'd14) ? 'd95 - 'd32 :decimal_second_ones+'d16; // 2
             // 空行
             31: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟 
+            32: ascii_num <= haveAlarmTemp ? 'd84-'d32 : 'd45 - 'd32;  // T有无温度报警 
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
-            32: ascii_num <= 'd50-'d32;  // 2
-            33: ascii_num <= 'd48-'d32;  // 0
-            34: ascii_num <= 'd50-'d32;  // 2
-            35: ascii_num <= 'd51-'d32;  // 3
-            36: ascii_num <= 'd47-'d32;  // /
-            37: ascii_num <= 'd48-'d32;  // 0
-            38: ascii_num <= 'd54-'d32;  // 6
-            39: ascii_num <= 'd47-'d32;  // /
-            40: ascii_num <= 'd48-'d32;  // 0
-            41: ascii_num <= 'd57-'d32;  // 9
+            33: ascii_num <= 'd50-'d32;  // 2
+            34: ascii_num <= 'd48-'d32;  // 0
+            35: ascii_num <= 'd50-'d32;  // 2
+            36: ascii_num <= 'd51-'d32;  // 3
+            37: ascii_num <= 'd47-'d32;  // /
+            38: ascii_num <= 'd48-'d32;  // 0
+            39: ascii_num <= 'd54-'d32;  // 6
+            40: ascii_num <= 'd47-'d32;  // /
+            41: ascii_num <= 'd48-'d32;  // 0
+            42: ascii_num <= 'd57-'d32;  // 9
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
-            42: ascii_num <= 'd70-'d32;  // F
-            43: ascii_num <= 'd114-'d32; // r
-            44: ascii_num <= 'd105-'d32; // i
-            45: ascii_num <= 'd46-'d32;  // .
+            43: ascii_num <= 'd70-'d32;  // F
+            44: ascii_num <= 'd114-'d32; // r
+            45: ascii_num <= 'd105-'d32; // i
+            46: ascii_num <= 'd46-'d32;  // .
             // 空行
-            46: ascii_num <= 'd32-'d32;  // 
+            47: ascii_num <= 'd32-'d32;  // 
             // y坐标为86处显示一条高度为1的横线
-            47: ascii_num <= 'd45-'d32;  // -
             48: ascii_num <= 'd45-'d32;  // -
             49: ascii_num <= 'd45-'d32;  // -
             50: ascii_num <= 'd45-'d32;  // -
@@ -188,14 +189,15 @@ always@(posedge sys_clk or negedge sys_rst_n)
             60: ascii_num <= 'd45-'d32;  // -
             61: ascii_num <= 'd45-'d32;  // -
             62: ascii_num <= 'd45-'d32;  // -
+            63: ascii_num <= 'd45-'d32;  // -
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            63: ascii_num <= TempHumi[15:8]/10 +'d16;  // 2
-            64: ascii_num <= TempHumi[15:8]%10 +'d16;  // 0
-            65: ascii_num <= 'd95;  // ℃
-            66: ascii_num <= 'd32-'d32;  //
-            67: ascii_num <= TempHumi[7:0]/10 +'d16;  // 1
-            68: ascii_num <= TempHumi[7:0]%10 +'d16;  // 0
-            69: ascii_num <= 'd37-'d32;  // %
+            64: ascii_num <= TempHumi[15:8]/10 +'d16;  // 2
+            65: ascii_num <= TempHumi[15:8]%10 +'d16;  // 0
+            66: ascii_num <= 'd95;  // ℃
+            67: ascii_num <= 'd32-'d32;  //
+            68: ascii_num <= TempHumi[7:0]/10 +'d16;  // 1
+            69: ascii_num <= TempHumi[7:0]%10 +'d16;  // 0
+            70: ascii_num <= 'd37-'d32;  // %
             default: ascii_num <= 'd0;
         endcase
 
@@ -240,50 +242,51 @@ always@(posedge sys_clk or negedge sys_rst_n)
             29: start_x <= 'd80;
             30: start_x <= 'd88;
             // 空行
-            31: start_x <= 'd60;
+            31: start_x <= 'd50;
+            32: start_x <= 'd70;
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
-            32: start_x <= 'd24;
-            33: start_x <= 'd32;
-            34: start_x <= 'd40;
-            35: start_x <= 'd48;
-            36: start_x <= 'd56;
-            37: start_x <= 'd64;
-            38: start_x <= 'd72;
-            39: start_x <= 'd80;
-            40: start_x <= 'd88;
-            41: start_x <= 'd96;
+            33: start_x <= 'd24;
+            34: start_x <= 'd32;
+            35: start_x <= 'd40;
+            36: start_x <= 'd48;
+            37: start_x <= 'd56;
+            38: start_x <= 'd64;
+            39: start_x <= 'd72;
+            40: start_x <= 'd80;
+            41: start_x <= 'd88;
+            42: start_x <= 'd96;
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
-            42: start_x <= 'd48;
-            43: start_x <= 'd56;
-            44: start_x <= 'd64;
-            45: start_x <= 'd72;
+            43: start_x <= 'd48;
+            44: start_x <= 'd56;
+            45: start_x <= 'd64;
+            46: start_x <= 'd72;
             // 空行
-            46: start_x <= 'd32;
+            47: start_x <= 'd32;
             // y坐标为86处显示一条高度为1的横线
-            47: start_x <= 'd0;
-            48: start_x <= 'd8;
-            49: start_x <= 'd16;
-            50: start_x <= 'd24;
-            51: start_x <= 'd32;
-            52: start_x <= 'd40;
-            53: start_x <= 'd48;
-            54: start_x <= 'd56;
-            55: start_x <= 'd64;
-            56: start_x <= 'd72;
-            57: start_x <= 'd80;
-            58: start_x <= 'd88;
-            59: start_x <= 'd96;
-            60: start_x <= 'd104;
-            61: start_x <= 'd112;
-            62: start_x <= 'd120;
+            48: start_x <= 'd0;
+            49: start_x <= 'd8;
+            50: start_x <= 'd16;
+            51: start_x <= 'd24;
+            52: start_x <= 'd32;
+            53: start_x <= 'd40;
+            54: start_x <= 'd48;
+            55: start_x <= 'd56;
+            56: start_x <= 'd64;
+            57: start_x <= 'd72;
+            58: start_x <= 'd80;
+            59: start_x <= 'd88;
+            60: start_x <= 'd96;
+            61: start_x <= 'd104;
+            62: start_x <= 'd112;
+            63: start_x <= 'd120;
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            63: start_x <= 'd36;
-            64: start_x <= 'd44;
-            65: start_x <= 'd52;
-            66: start_x <= 'd60;
-            67: start_x <= 'd68;
-            68: start_x <= 'd76;
-            69: start_x <= 'd84;
+            64: start_x <= 'd36;
+            65: start_x <= 'd44;
+            66: start_x <= 'd52;
+            67: start_x <= 'd60;
+            68: start_x <= 'd68;
+            69: start_x <= 'd76;
+            70: start_x <= 'd84;
             // 默认情况下起始位置为0
             default: start_x <= 'd0;
         endcase
@@ -327,7 +330,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             29: start_y <= 'd48;
             30: start_y <= 'd48;
             31: start_y <= 'd64;
-            32: start_y <= 'd80;
+            32: start_y <= 'd64;
             33: start_y <= 'd80;
             34: start_y <= 'd80;
             35: start_y <= 'd80;
@@ -337,12 +340,12 @@ always@(posedge sys_clk or negedge sys_rst_n)
             39: start_y <= 'd80;
             40: start_y <= 'd80;
             41: start_y <= 'd80;
-            42: start_y <= 'd96;
+            42: start_y <= 'd80;
             43: start_y <= 'd96;
             44: start_y <= 'd96;
             45: start_y <= 'd96;
-            46: start_y <= 'd112;
-            47: start_y <= 'd128;
+            46: start_y <= 'd96;
+            47: start_y <= 'd112;
             48: start_y <= 'd128;
             49: start_y <= 'd128;
             50: start_y <= 'd128;
@@ -358,13 +361,14 @@ always@(posedge sys_clk or negedge sys_rst_n)
             60: start_y <= 'd128;
             61: start_y <= 'd128;
             62: start_y <= 'd128;
-            63: start_y <= 'd144;
+            63: start_y <= 'd128;
             64: start_y <= 'd144;
             65: start_y <= 'd144;
             66: start_y <= 'd144;
             67: start_y <= 'd144;
             68: start_y <= 'd144;
             69: start_y <= 'd144;
+            70: start_y <= 'd144;
             default: start_y <= 'd0;
         endcase
     else

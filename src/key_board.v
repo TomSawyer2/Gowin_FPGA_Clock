@@ -229,7 +229,7 @@ module key_board
 			8'b0111_0001 : Key_Value <= 4'd13;
 			8'b0111_0010 : Key_Value <= 4'd14;
 			8'b0111_0100 : Key_Value <= 4'd15;
-			8'b0111_1000 : Key_Value <= 4'd0; // F键不需要
+			8'b0111_1000 : Key_Value <= 4'd10;
 			default: Key_Value <= Key_Value ;
 		endcase
 	end
