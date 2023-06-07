@@ -7,7 +7,7 @@ type=ram_prom
 version=1.0
 
 [Config]
-DEPTH=2660
+DEPTH=2724
 LANG=0
 MEM_FILE=../AsciiROM_8x2660.mi
 READ=0

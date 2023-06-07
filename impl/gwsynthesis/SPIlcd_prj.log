@@ -37,8 +37,8 @@ Compiling module 'lcd_init'("F:\hardware_design\gowin_fpga_clock\src\lcd_init.v"
 Compiling module 'muxcontrol'("F:\hardware_design\gowin_fpga_clock\src\centerctrl.v":6)
 Compiling module 'lcd_write'("F:\hardware_design\gowin_fpga_clock\src\lcd_write.v":7)
 Compiling module 'show_string_number_ctrl'("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":16)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":189)
-WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":193)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":192)
+WARN  (EX3791) : Expression size 9 truncated to fit in target size 7("F:\hardware_design\gowin_fpga_clock\src\show_string_number_ctrl.v":196)
 Compiling module 'lcd_show_char'("F:\hardware_design\gowin_fpga_clock\src\lcd_show_char.v":6)
 Compiling module 'ascii_pROM'("F:\hardware_design\gowin_fpga_clock\src\gowin_prom\ascii_pROM.v":9)
 NOTE  (EX0101) : Current top module is "spi_st7735lcd"

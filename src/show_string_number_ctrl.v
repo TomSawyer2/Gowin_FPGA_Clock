@@ -120,10 +120,10 @@ always@(posedge sys_clk or negedge sys_rst_n)
             0: ascii_num <= 'd120-'d32; // x
             1: ascii_num <= 'd121-'d32; // y
             2: ascii_num <= 'd122-'d32; // z
+            3: ascii_num <= 'd96; // 何
+            4: ascii_num <= 'd97; // 余
+            5: ascii_num <= 'd98; // 郑
             // y坐标为20处显示一条高度为1的横线
-            3: ascii_num <= 'd45-'d32;  // -
-            4: ascii_num <= 'd45-'d32;  // -
-            5: ascii_num <= 'd45-'d32;  // -
             6: ascii_num <= 'd45-'d32;  // -
             7: ascii_num <= 'd45-'d32;  // -
             8: ascii_num <= 'd45-'d32;  // -
@@ -137,41 +137,41 @@ always@(posedge sys_clk or negedge sys_rst_n)
             16: ascii_num <= 'd45-'d32;  // -
             17: ascii_num <= 'd45-'d32;  // -
             18: ascii_num <= 'd45-'d32;  // -
+            19: ascii_num <= 'd45-'d32;  // -
+            20: ascii_num <= 'd45-'d32;  // -
+            21: ascii_num <= 'd45-'d32;  // -
             // 空行
-            19: ascii_num <= 'd32-'d32;  // 
+            22: ascii_num <= 'd32-'d32;  // 
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
-            20: ascii_num <= (Status == 5'd1 || Status == 5'd2 || Status == 5'd9) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
-            21: ascii_num <= (Status == 5'd3 || Status == 5'd4 || Status == 5'd10) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
-            22: ascii_num <= 'd58-'d32;  // :
-            23: ascii_num <= (Status == 5'd5 || Status == 5'd6 || Status == 5'd11) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
-            24: ascii_num <= (Status == 5'd7 || Status == 5'd8 || Status == 5'd12) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
+            23: ascii_num <= (Status == 5'd1 || Status == 5'd2 || Status == 5'd9) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
+            24: ascii_num <= (Status == 5'd3 || Status == 5'd4 || Status == 5'd10) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
             25: ascii_num <= 'd58-'d32;  // :
-            26: ascii_num <= decimal_second_tens+'d16; // 2
-            27: ascii_num <= decimal_second_ones+'d16; // 2
+            26: ascii_num <= (Status == 5'd5 || Status == 5'd6 || Status == 5'd11) ? 'd95 - 'd32 : decimal_minute_tens+'d16;  // 1
+            27: ascii_num <= (Status == 5'd7 || Status == 5'd8 || Status == 5'd12) ? 'd95 - 'd32 : decimal_minute_ones+'d16;  // 0
+            28: ascii_num <= 'd58-'d32;  // :
+            29: ascii_num <= decimal_second_tens+'d16; // 2
+            30: ascii_num <= decimal_second_ones+'d16; // 2
             // 空行
-            28: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟 
+            31: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟 
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
-            29: ascii_num <= 'd50-'d32;  // 2
-            30: ascii_num <= 'd48-'d32;  // 0
-            31: ascii_num <= 'd50-'d32;  // 2
-            32: ascii_num <= 'd51-'d32;  // 3
-            33: ascii_num <= 'd47-'d32;  // /
-            34: ascii_num <= 'd48-'d32;  // 0
-            35: ascii_num <= 'd54-'d32;  // 6
+            32: ascii_num <= 'd50-'d32;  // 2
+            33: ascii_num <= 'd48-'d32;  // 0
+            34: ascii_num <= 'd50-'d32;  // 2
+            35: ascii_num <= 'd51-'d32;  // 3
             36: ascii_num <= 'd47-'d32;  // /
             37: ascii_num <= 'd48-'d32;  // 0
-            38: ascii_num <= 'd57-'d32;  // 9
+            38: ascii_num <= 'd54-'d32;  // 6
+            39: ascii_num <= 'd47-'d32;  // /
+            40: ascii_num <= 'd48-'d32;  // 0
+            41: ascii_num <= 'd57-'d32;  // 9
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
-            39: ascii_num <= 'd70-'d32;  // F
-            40: ascii_num <= 'd114-'d32; // r
-            41: ascii_num <= 'd105-'d32; // i
-            42: ascii_num <= 'd46-'d32;  // .
+            42: ascii_num <= 'd70-'d32;  // F
+            43: ascii_num <= 'd114-'d32; // r
+            44: ascii_num <= 'd105-'d32; // i
+            45: ascii_num <= 'd46-'d32;  // .
             // 空行
-            43: ascii_num <= 'd32-'d32;  // 
+            46: ascii_num <= 'd32-'d32;  // 
             // y坐标为86处显示一条高度为1的横线
-            44: ascii_num <= 'd45-'d32;  // -
-            45: ascii_num <= 'd45-'d32;  // -
-            46: ascii_num <= 'd45-'d32;  // -
             47: ascii_num <= 'd45-'d32;  // -
             48: ascii_num <= 'd45-'d32;  // -
             49: ascii_num <= 'd45-'d32;  // -
@@ -185,14 +185,17 @@ always@(posedge sys_clk or negedge sys_rst_n)
             57: ascii_num <= 'd45-'d32;  // -
             58: ascii_num <= 'd45-'d32;  // -
             59: ascii_num <= 'd45-'d32;  // -
+            60: ascii_num <= 'd45-'d32;  // -
+            61: ascii_num <= 'd45-'d32;  // -
+            62: ascii_num <= 'd45-'d32;  // -
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            60: ascii_num <= TempHumi[15:8]/10 +'d16;  // 2
-            61: ascii_num <= TempHumi[15:8]%10 +'d16;  // 0
-            62: ascii_num <= 'd67-'d32;  // ℃
-            63: ascii_num <= 'd32-'d32;  //
-            64: ascii_num <= TempHumi[7:0]/10 +'d16;  // 1
-            65: ascii_num <= TempHumi[7:0]%10 +'d16;  // 0
-            66: ascii_num <= 'd37-'d32;  // %
+            63: ascii_num <= TempHumi[15:8]/10 +'d16;  // 2
+            64: ascii_num <= TempHumi[15:8]%10 +'d16;  // 0
+            65: ascii_num <= 'd95;  // ℃
+            66: ascii_num <= 'd32-'d32;  //
+            67: ascii_num <= TempHumi[7:0]/10 +'d16;  // 1
+            68: ascii_num <= TempHumi[7:0]%10 +'d16;  // 0
+            69: ascii_num <= 'd37-'d32;  // %
             default: ascii_num <= 'd0;
         endcase
 
@@ -202,82 +205,85 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else if(init_done)
         case(cnt_ascii_num)        //根据当前展示数目（字符坐标）给出展示位置（屏幕坐标）,先定横向x
             // 居中显示xyz三个字母，高度为16px，y坐标为2
-            0: start_x <= 'd56;
-            1: start_x <= 'd64;
-            2: start_x <= 'd72;
+            0: start_x <= 'd8;
+            1: start_x <= 'd16;
+            2: start_x <= 'd24;
+            3: start_x <= 'd96;
+            4: start_x <= 'd104;
+            5: start_x <= 'd112;
             // y坐标为20处显示一条高度为1的横线
-            3: start_x <= 'd0;
-            4: start_x <= 'd8;
-            5: start_x <= 'd16;
-            6: start_x <= 'd24;
-            7: start_x <= 'd32;
-            8: start_x <= 'd40;
-            9: start_x <= 'd48;
-            10: start_x <= 'd56;
-            11: start_x <= 'd64;
-            12: start_x <= 'd72;
-            13: start_x <= 'd80;
-            14: start_x <= 'd88;
-            15: start_x <= 'd96;
-            16: start_x <= 'd104;
-            17: start_x <= 'd112;
-            18: start_x <= 'd120;
+            6: start_x <= 'd0;
+            7: start_x <= 'd8;
+            8: start_x <= 'd16;
+            9: start_x <= 'd24;
+            10: start_x <= 'd32;
+            11: start_x <= 'd40;
+            12: start_x <= 'd48;
+            13: start_x <= 'd56;
+            14: start_x <= 'd64;
+            15: start_x <= 'd72;
+            16: start_x <= 'd80;
+            17: start_x <= 'd88;
+            18: start_x <= 'd96;
+            19: start_x <= 'd104;
+            20: start_x <= 'd112;
+            21: start_x <= 'd120;
             // 空行
-            19: start_x <= 'd32;
+            22: start_x <= 'd32;
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
-            20: start_x <= 'd32;
-            21: start_x <= 'd40;
-            22: start_x <= 'd48;
-            23: start_x <= 'd56;
-            24: start_x <= 'd64;
-            25: start_x <= 'd72;
-            26: start_x <= 'd80;
-            27: start_x <= 'd88;
+            23: start_x <= 'd32;
+            24: start_x <= 'd40;
+            25: start_x <= 'd48;
+            26: start_x <= 'd56;
+            27: start_x <= 'd64;
+            28: start_x <= 'd72;
+            29: start_x <= 'd80;
+            30: start_x <= 'd88;
             // 空行
-            28: start_x <= 'd60;
+            31: start_x <= 'd60;
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
-            29: start_x <= 'd24;
-            30: start_x <= 'd32;
-            31: start_x <= 'd40;
-            32: start_x <= 'd48;
-            33: start_x <= 'd56;
-            34: start_x <= 'd64;
-            35: start_x <= 'd72;
-            36: start_x <= 'd80;
-            37: start_x <= 'd88;
-            38: start_x <= 'd96;
+            32: start_x <= 'd24;
+            33: start_x <= 'd32;
+            34: start_x <= 'd40;
+            35: start_x <= 'd48;
+            36: start_x <= 'd56;
+            37: start_x <= 'd64;
+            38: start_x <= 'd72;
+            39: start_x <= 'd80;
+            40: start_x <= 'd88;
+            41: start_x <= 'd96;
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
-            39: start_x <= 'd48;
-            40: start_x <= 'd56;
-            41: start_x <= 'd64;
-            42: start_x <= 'd72;
+            42: start_x <= 'd48;
+            43: start_x <= 'd56;
+            44: start_x <= 'd64;
+            45: start_x <= 'd72;
             // 空行
-            43: start_x <= 'd32;
+            46: start_x <= 'd32;
             // y坐标为86处显示一条高度为1的横线
-            44: start_x <= 'd0;
-            45: start_x <= 'd8;
-            46: start_x <= 'd16;
-            47: start_x <= 'd24;
-            48: start_x <= 'd32;
-            49: start_x <= 'd40;
-            50: start_x <= 'd48;
-            51: start_x <= 'd56;
-            52: start_x <= 'd64;
-            53: start_x <= 'd72;
-            54: start_x <= 'd80;
-            55: start_x <= 'd88;
-            56: start_x <= 'd96;
-            57: start_x <= 'd104;
-            58: start_x <= 'd112;
-            59: start_x <= 'd120;
+            47: start_x <= 'd0;
+            48: start_x <= 'd8;
+            49: start_x <= 'd16;
+            50: start_x <= 'd24;
+            51: start_x <= 'd32;
+            52: start_x <= 'd40;
+            53: start_x <= 'd48;
+            54: start_x <= 'd56;
+            55: start_x <= 'd64;
+            56: start_x <= 'd72;
+            57: start_x <= 'd80;
+            58: start_x <= 'd88;
+            59: start_x <= 'd96;
+            60: start_x <= 'd104;
+            61: start_x <= 'd112;
+            62: start_x <= 'd120;
             // y坐标为109处显示20℃10%这六个字符，高度为20
-            60: start_x <= 'd36;
-            61: start_x <= 'd44;
-            62: start_x <= 'd52;
-            63: start_x <= 'd60;
-            64: start_x <= 'd68;
-            65: start_x <= 'd76;
-            66: start_x <= 'd84;
+            63: start_x <= 'd36;
+            64: start_x <= 'd44;
+            65: start_x <= 'd52;
+            66: start_x <= 'd60;
+            67: start_x <= 'd68;
+            68: start_x <= 'd76;
+            69: start_x <= 'd84;
             // 默认情况下起始位置为0
             default: start_x <= 'd0;
         endcase
@@ -292,10 +298,10 @@ always@(posedge sys_clk or negedge sys_rst_n)
             0 : start_y <= 'd0;
             1 : start_y <= 'd0;
             2 : start_y <= 'd0;
-            3 : start_y <= 'd16;  
-            4 : start_y <= 'd16;
-            5 : start_y <= 'd16;
-            6 : start_y <= 'd16;
+            3 : start_y <= 'd0;
+            4 : start_y <= 'd0;
+            5 : start_y <= 'd0;
+            6 : start_y <= 'd16;  
             7 : start_y <= 'd16;
             8 : start_y <= 'd16;
             9 : start_y <= 'd16;
@@ -308,19 +314,19 @@ always@(posedge sys_clk or negedge sys_rst_n)
             16 : start_y <= 'd16;
             17 : start_y <= 'd16;
             18 : start_y <= 'd16;
-            19 : start_y <= 'd32;
-            20 : start_y <= 'd48;
-            21 : start_y <= 'd48;
-            22 : start_y <= 'd48;
-            23 : start_y <= 'd48;  
-            24 : start_y <= 'd48;  
-            25: start_y <= 'd48;
-            26: start_y <= 'd48;
-            27: start_y <= 'd48;
-            28: start_y <= 'd64;
-            29: start_y <= 'd80;
-            30: start_y <= 'd80;
-            31: start_y <= 'd80;
+            19 : start_y <= 'd16;
+            20 : start_y <= 'd16;
+            21 : start_y <= 'd16;
+            22 : start_y <= 'd32;
+            23 : start_y <= 'd48;
+            24 : start_y <= 'd48;
+            25 : start_y <= 'd48;
+            26 : start_y <= 'd48;  
+            27 : start_y <= 'd48;  
+            28: start_y <= 'd48;
+            29: start_y <= 'd48;
+            30: start_y <= 'd48;
+            31: start_y <= 'd64;
             32: start_y <= 'd80;
             33: start_y <= 'd80;
             34: start_y <= 'd80;
@@ -328,14 +334,14 @@ always@(posedge sys_clk or negedge sys_rst_n)
             36: start_y <= 'd80;
             37: start_y <= 'd80;
             38: start_y <= 'd80;
-            39: start_y <= 'd96;
-            40: start_y <= 'd96;
-            41: start_y <= 'd96;
+            39: start_y <= 'd80;
+            40: start_y <= 'd80;
+            41: start_y <= 'd80;
             42: start_y <= 'd96;
-            43: start_y <= 'd112;
-            44: start_y <= 'd128;
-            45: start_y <= 'd128;
-            46: start_y <= 'd128;
+            43: start_y <= 'd96;
+            44: start_y <= 'd96;
+            45: start_y <= 'd96;
+            46: start_y <= 'd112;
             47: start_y <= 'd128;
             48: start_y <= 'd128;
             49: start_y <= 'd128;
@@ -349,13 +355,16 @@ always@(posedge sys_clk or negedge sys_rst_n)
             57: start_y <= 'd128;
             58: start_y <= 'd128;
             59: start_y <= 'd128;
-            60: start_y <= 'd144;
-            61: start_y <= 'd144;
-            62: start_y <= 'd144;
+            60: start_y <= 'd128;
+            61: start_y <= 'd128;
+            62: start_y <= 'd128;
             63: start_y <= 'd144;
             64: start_y <= 'd144;
             65: start_y <= 'd144;
             66: start_y <= 'd144;
+            67: start_y <= 'd144;
+            68: start_y <= 'd144;
+            69: start_y <= 'd144;
             default: start_y <= 'd0;
         endcase
     else
