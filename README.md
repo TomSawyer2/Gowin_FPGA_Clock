@@ -27,8 +27,8 @@
 
 ## 一些文档
 
-- [运行项目](https://github.com/TomSawyer2/Gowin_FPGA_Clock/tree/main/docs/)
-- [LCD显示中文或特殊符号](https://github.com/TomSawyer2/Gowin_FPGA_Clock/tree/main/docs/)
+- [运行项目](https://github.com/TomSawyer2/Gowin_FPGA_Clock/blob/main/docs/%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE.md)
+- [LCD显示中文或特殊符号](https://github.com/TomSawyer2/Gowin_FPGA_Clock/blob/main/docs/LCD%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E6%88%96%E7%89%B9%E6%AE%8A%E7%AC%A6%E5%8F%B7.md)
 
 ## Contributor
 
