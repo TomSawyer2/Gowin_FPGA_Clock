@@ -1,25 +1,19 @@
 //****************************************Copyright (c)***********************************//
 //----------------------------------------------------------------------------------------
-// Author：Pxm
+// Original Author：Pxm
 // File name: spi_st7735lcd
-// First establish Date: 2022/12/15 
-// Descriptions: st7735R-SPI-LCD-demo顶层模块
-// OutPin--CS    屏（从机）片选
-// OutPin--RESET ST7735复位          （也有标RST）
-// OutPin--DC    命令or数据指示      （也有标RS）
-// OutPin--MOSI  主机输出数据给屏从机（也有标SDI）
-// OutPin--SCLK  主机输出数据时钟    （也有标SCK）
-// OutPin--LED   背光开关            （也有标BLK）
+// First establish Date: 2022/12/15
+// Last Modified Date: 2023/06/08
+// Descriptions: 顶层模块
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
-module  spi_st7735lcd
-(
+module  spi_st7735lcd(
     input           xtal_clk      ,
     input           sys_rst_n     ,
     input [3:0]     key_row       ,
     inout           dht11         ,
-    
+
     output          lcd_rst       ,
     output          lcd_dc        ,
     output          lcd_sclk      ,
@@ -27,11 +21,11 @@ module  spi_st7735lcd
     output          lcd_cs        ,
     output          lcd_led       ,
     output [3:0]    key_col       ,
-    output          BUZZER        
+    output          BUZZER
 );
-wire    [8:0]   data;   
+wire    [8:0]   data;
 wire            en_write;
-wire            wr_done; 
+wire            wr_done;
 
 wire    [8:0]   init_data;
 wire            en_write_init;
@@ -60,14 +54,6 @@ key_board key1(
 	.Key_Value(KEY_Value),
 	.Key_Board_Col_o(key_col)
 );
-//KeyValue keyValue1(
-//	.CLK(sys_clk),
-//	.nRST(sys_rst_n),
-//	.KEY_ROW(key_row),
-//	.KEY_COL(key_col),
-//	.KEY_Value(KEY_Value),
-//	.Value_en(Value_en)
-//);
 
 // 数字钟逻辑
 // 设置nCR复位信号默认为高电平
@@ -159,21 +145,21 @@ dht11 dht11_inst(.TempHumi(TempHumi),
                  .dht11(dht11));
 
 // 显示屏逻辑
-lcd_init 
+lcd_init
 /*
 `ifdef  __SIM
 #( //仿真时调用
- .TIME20MS(23'd20),   
- .TIME40MS(23'd40),   
- .TIME5MS (23'd5),   
+ .TIME20MS(23'd20),
+ .TIME40MS(23'd40),
+ .TIME5MS (23'd5),
  .HEIGHT(8'd12),
  .WIDTH (8'd10)
 )
 `else
 #( //适配小屏硬件用，工作时钟50MHz用缺省参数即可，此处用24MHz外部时钟，所以减半！
-  .TIME20MS(23'd 500_000),  //23'd1000_000  
-  .TIME40MS(23'd1000_000),  //23'd2000_000  
-  .TIME5MS (23'd 125_000),   //23'd 250_000  
+  .TIME20MS(23'd 500_000),  //23'd1000_000
+  .TIME40MS(23'd1000_000),  //23'd2000_000
+  .TIME5MS (23'd 125_000),   //23'd 250_000
    //小屏硬件尺寸定义，参数不能超255，也不要用表达式（如128-1这种）！
   .HEIGHT(8'd131), //131适合128x128屏，改为161则适合160x128屏
   .WIDTH (8'd131)  //Qig128屏或Air160屏除了改动Height，还要更换管脚定义文件
@@ -198,7 +184,7 @@ wire show_char_flag;
 
 muxcontrol  muxcontrol_inst
 (
-    .sys_clk            (sys_clk           ) ,   
+    .sys_clk            (sys_clk           ) ,
     .sys_rst_n          (sys_rst_n         ) ,
     .init_done          (init_done         ) ,
 
@@ -217,7 +203,7 @@ lcd_write  lcd_write_inst
     .sys_rst_n    (sys_rst_n    ),
     .data         (data         ),
     .en_write     (en_write     ),
-                                
+
     .wr_done      (wr_done      ),
     .cs           (lcd_cs       ),
     .dc           (lcd_dc       ),
@@ -243,8 +229,8 @@ show_string_number_ctrl  show_string_number_inst
     .show_char_flag (show_char_flag ) ,
     .ascii_num      (ascii_num      ) ,
     .start_x        (start_x        ) ,
-    .start_y        (start_y        ) 
-);  
+    .start_y        (start_y        )
+);
 
 
 lcd_show_char  lcd_show_char_inst
@@ -255,8 +241,8 @@ lcd_show_char  lcd_show_char_inst
     .en_size            (en_size            ),   //为0时字体大小的12x6，为1时字体大小的16x8
     .show_char_flag     (show_char_flag     ),   //显示字符标志信号
     .ascii_num          (ascii_num          ),   //需要显示字符的ascii码
-    .start_x            (start_x            ),   //起点的x坐标    
-    .start_y            (start_y            ),   //起点的y坐标    
+    .start_x            (start_x            ),   //起点的x坐标
+    .start_y            (start_y            ),   //起点的y坐标
 
     .show_char_data     (show_char_data     ),   //传输的命令或者数据
     .en_write_show_char (en_write_show_char ),   //使能写spi信号

@@ -3,19 +3,18 @@
 // Descriptions: （居中）控制切换选择LCD 初始化 或 展示Ascii字符及数字 信号输出。
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
-module  muxcontrol
-(
-    input   wire             sys_clk             ,   
+module  muxcontrol(
+    input   wire             sys_clk             ,
     input   wire             sys_rst_n           ,
     input   wire             init_done           ,
-    
+
     input   wire     [8:0]   init_data           ,
     input   wire             en_write_init       ,
     input   wire     [8:0]   show_char_data      ,
     input   wire             en_write_show_char  ,
-    
+
     output  reg      [8:0]   data                ,
-    output  reg              en_write      
+    output  reg              en_write
 );
 
 always @(posedge sys_clk or negedge sys_rst_n)
@@ -37,5 +36,5 @@ always @(posedge sys_clk or negedge sys_rst_n)
         en_write <= en_write_show_char; //否则由展示模块控制
     else
         en_write <= en_write;
-        
+
 endmodule

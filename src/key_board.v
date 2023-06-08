@@ -1,5 +1,4 @@
-module key_board
-(
+module key_board(
 	Clk,
 	Rst_n,
 	Key_Board_Row_i,
@@ -17,7 +16,7 @@ module key_board
 	output reg [3:0]Key_Value;
 	output reg [3:0]Key_Board_Col_o;
 
-	
+
 	// 输入列寄存器信号，输入以后做一次寄存
 	reg [3:0]Key_Board_Row_r;
 
@@ -25,19 +24,19 @@ module key_board
 	reg [19:0] counter1; //滤波定时，时钟周期计数器
 	reg Cnt_Done;	//滤波时间完成标志信号
 
-	reg [3:0]Col_Tmp ; 	// 列按键按下状态 
+	reg [3:0]Col_Tmp ; 	// 列按键按下状态
 	reg  Key_Flag_r; 	// 按键成功标志位
-	
+
 	reg [7:0]Key_Value_tmp;
-	
+
 	reg  [10:0]state;
-	
+
 	//按键按下标志位
 	always@(posedge Clk)
 		Key_flag <= Key_Flag_r;
-	
+
 	// 状态机状态参数
-	localparam 
+	localparam
 		IDEL				= 11'b00000000001,
 		P_FILTER			= 11'b00000000010,
 		READ_ROW_P 		= 11'b00000000100,
@@ -63,7 +62,7 @@ module key_board
 	end
 	else
 		counter1 <= 20'd0;
-		
+
 	always@(posedge Clk or negedge Rst_n)
 	if(!Rst_n)
 		Cnt_Done <= 1'b0;
@@ -89,14 +88,14 @@ module key_board
 	else
 	begin
 		case (state)
-			IDEL: 
+			IDEL:
 				if(~&Key_Board_Row_i)begin  // Key_Board_Row_i  不等于 4‘d1111,说明有按键按下
 					En_Cnt <= 1'b1 ;    // 开启滤波定时器
 					state <= P_FILTER;  // 跳转进入前级滤波状态
 				end
 				else begin			// 按键未按下
 					En_Cnt <=1'b0 ; // 消抖滤波定时器关闭
-					state  <=IDEL ; // 等待状态 
+					state  <=IDEL ; // 等待状态
 				end
 			P_FILTER :
 				if(Cnt_Done) begin	//消抖滤波定时时间结束
@@ -180,7 +179,7 @@ module key_board
 					begin
 						state <= WAIT_R ;
 						En_Cnt =1'b0; // 消抖滤波的计时器暂时先不开启
-					end	
+					end
 				end
 			R_FILTER :
 				if(Cnt_Done)begin  //后消抖滤波定时完成
@@ -201,7 +200,7 @@ module key_board
 					En_Cnt <= 1'b1; 		// 开启滤波消抖定时器
 				end
 			default:  state <= IDEL; // 默认，或者运行出错，进入空闲状态
-		endcase  
+		endcase
 	end
 
 	//按键输出状态查找表  根据 : Key_Value_tmp <= {Key_Board_Row_r,Col_Tmp};  实现数据的查找
@@ -215,17 +214,17 @@ module key_board
 			8'b1110_0010 : Key_Value <= 4'd2;
 			8'b1110_0100 : Key_Value <= 4'd3;
 			8'b1110_1000 : Key_Value <= 4'd4;
-			
+
 			8'b1101_0001 : Key_Value <= 4'd5;
 			8'b1101_0010 : Key_Value <= 4'd6;
 			8'b1101_0100 : Key_Value <= 4'd7;
 			8'b1101_1000 : Key_Value <= 4'd8;
-			
+
 			8'b1011_0001 : Key_Value <= 4'd9;
 			8'b1011_0010 : Key_Value <= 4'd0;
 			8'b1011_0100 : Key_Value <= 4'd11;
 			8'b1011_1000 : Key_Value <= 4'd12;
-			
+
 			8'b0111_0001 : Key_Value <= 4'd13;
 			8'b0111_0010 : Key_Value <= 4'd14;
 			8'b0111_0100 : Key_Value <= 4'd15;

@@ -4,8 +4,7 @@
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
 
-module  lcd_write
-(
+module  lcd_write(
     input   wire            sys_clk             ,
     input   wire            sys_rst_n           ,
     input   wire    [8:0]   data                ,
@@ -15,7 +14,7 @@ module  lcd_write
     output  wire            cs                  ,
     output  wire            dc                  ,
     output  reg             sclk                ,
-    output  reg             mosi                
+    output  reg             mosi
 );
 
 //****************** Parameter and Internal Signal *******************//
@@ -36,7 +35,7 @@ parameter STATE1 = 4'b0_010;
 parameter STATE2 = 4'b0_100;
 parameter DONE   = 4'b1_000;
 
-//----------------------------------------------------------------- 
+//-----------------------------------------------------------------
 reg     [3:0]   state;
 reg     [4:0]   cnt_delay;
 reg     [3:0]   cnt1;
@@ -44,20 +43,20 @@ reg     [3:0]   cnt_sclk;
 reg             sclk_flag;
 reg             state2_finish_flag;
 
-//******************************* Main Code **************************// 
+//******************************* Main Code **************************//
 //实现状态的跳转
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
         state <= STATE0;
     else
         case(state)
-            STATE0 : state <= (en_write) ? STATE1 : STATE0; 
-            STATE1 : state <= (cnt_delay == DELAY_TIME) ? STATE2 : STATE1; 
+            STATE0 : state <= (en_write) ? STATE1 : STATE0;
+            STATE1 : state <= (cnt_delay == DELAY_TIME) ? STATE2 : STATE1;
             STATE2 : state <= (state2_finish_flag) ? DONE : STATE2;
             DONE   : state <= STATE0;
         endcase
-        
-//----------------------------------------------------------------- 
+
+//-----------------------------------------------------------------
 //计数器cnt_delay用来延迟
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -77,8 +76,8 @@ always@(posedge sys_clk or negedge sys_rst_n)
         cnt1 <= 'd0;
     else if(state == STATE2 && cnt_sclk == CNT_SCLK_MAX)
         cnt1 <= cnt1 + 1'b1;
-        
-//计数器cnt_sclk决定spi的时钟       
+
+//计数器cnt_sclk决定spi的时钟
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
         cnt_sclk <= 'd0;
@@ -86,7 +85,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
         cnt_sclk <= 'd0;
     else if(state == STATE2 && cnt_sclk < CNT_SCLK_MAX)
         cnt_sclk <= cnt_sclk + 1'b1;
-         
+
 //时钟sclk的标志信号
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -98,7 +97,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
         sclk_flag <= 1'b1;
     else
         sclk_flag <= 1'b0;
-        
+
 //状态STATE2跳转到状态DONE的标志信号
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -107,8 +106,8 @@ always@(posedge sys_clk or negedge sys_rst_n)
         state2_finish_flag <= 1'b1;
     else
         state2_finish_flag <= 1'b0;
-        
-//-----------------------------------------------------------------           
+
+//-----------------------------------------------------------------
 //sclk时钟信号
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -160,6 +159,6 @@ assign cs = (state == STATE2) ? 1'b0 : 1'b1;
 
 //dc液晶屏寄存器/数据选择信号，低电平：寄存器，高电平：数据
 //接收的data的最高位决定dc的状态
-assign dc = data[8]; 
+assign dc = data[8];
 
 endmodule

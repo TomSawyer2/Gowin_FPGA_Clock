@@ -1,6 +1,6 @@
-module btn_deb (
+module btn_deb(
     input            clk,
-    input            btn_in,                           
+    input            btn_in,
     output reg       btn_out
     );
     reg [7:0] time_cnt = 18'd0;//21ms计时计数寄存器；

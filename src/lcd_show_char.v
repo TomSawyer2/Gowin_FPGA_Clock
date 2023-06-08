@@ -3,16 +3,15 @@
 // Descriptions: 让st7735-SPI-LCD展示Ascii字符及数字的数据组织提供模块
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
-module lcd_show_char
-(
+module lcd_show_char(
     input       wire            sys_clk             ,
     input       wire            sys_rst_n           ,
     input       wire            wr_done             ,
     input       wire            en_size             ,   //为0时字体大小的12x6，为1时字体大小的16x8
     input       wire            show_char_flag      ,   //显示字符标志信号
     input       wire    [6:0]   ascii_num           ,   //需要显示字符的ascii码
-    input       wire    [8:0]   start_x             ,   //起点的x坐标    
-    input       wire    [8:0]   start_y             ,   //起点的y坐标    
+    input       wire    [8:0]   start_x             ,   //起点的x坐标
+    input       wire    [8:0]   start_y             ,   //起点的y坐标
 
     output      wire    [8:0]   show_char_data      ,   //传输的命令或者数据
     output      wire            en_write_show_char  ,   //使能写spi信号
@@ -21,8 +20,8 @@ module lcd_show_char
 
 //画笔颜色
 //localparam  BLUE          = 16'h001F,
-//            GREEN         = 16'h07E0,	  
-//            RED           = 16'hF800,  
+//            GREEN         = 16'h07E0,
+//            RED           = 16'hF800,
 //            CYAN          = 16'h07FF,
 //            MAGENTA       = 16'hF81F,
 //            YELLOW        = 16'hFFE0,
@@ -30,8 +29,8 @@ module lcd_show_char
 //            LIGHTGREEN    = 16'h87F0,
 //            LIGHTRED      = 16'hFC10,
 //            LIGHTCYAN     = 16'h87FF,
-//            LIGHTMAGENTA  = 16'hFC1F, 
-//            LIGHTYELLOW   = 16'hFFF0, 
+//            LIGHTMAGENTA  = 16'hFC1F,
+//            LIGHTYELLOW   = 16'hFFF0,
 //            DARKBLUE      = 16'h0010;
 //            DARKGREEN     = 16'h0400,
 //            DARKRED       = 16'h8000,
@@ -46,8 +45,8 @@ localparam            WHITE         = 16'hFFFF, //白色
 //            BROWN         = 16'hA145,
 //            ORANGE        = 16'hFD20;
 
-localparam  CLRSCR1  = BLACK;  
-localparam  FRONTCOLOR  = WHITE;  
+localparam  CLRSCR1  = BLACK;
+localparam  FRONTCOLOR  = WHITE;
 
 //****************** Parameter and Internal Signal *******************//
 //en_size == 0时选用字体大小为12x6   //注意12正好是6的两倍，后面用到此点
@@ -58,7 +57,7 @@ parameter   SIZE0_LENGTH_MAX = 4'd11;
 parameter   SIZE1_WIDTH_MAX  = 3'd7;
 parameter   SIZE1_LENGTH_MAX = 4'd15;
 
-parameter   STATE0 = 4'b0_001;     
+parameter   STATE0 = 4'b0_001;
 parameter   STATE1 = 4'b0_010;
 parameter   STATE2 = 4'b0_100;
 parameter   DONE   = 4'b1_000;
@@ -72,7 +71,7 @@ reg     [3:0]   state;
 
 //设置显示窗口
 reg             the1_wr_done;
-reg     [3:0]   cnt_set_windows;  
+reg     [3:0]   cnt_set_windows;
   //lcd控制芯片设置窗口操作有11bytes数据。
   //cnt_set_windows是为这11bytes用的计数器，计数范围0--10。
   //其主要作用在代码段230行，还关联123行和130行。
@@ -103,7 +102,7 @@ reg     [5:0]   cnt_wr_color_data;
 //要传输的命令或者数据
 reg     [8:0]   data;
 
-//状态STATE2跳转到DONE的标志信号        
+//状态STATE2跳转到DONE的标志信号
 wire    state2_finish_flag;
 
 //******************************* Main Code **************************//
@@ -122,19 +121,19 @@ always@(posedge sys_clk or negedge sys_rst_n)
             STATE2 : state <= (state2_finish_flag) ? DONE : STATE2;  //(cnt_length_num == SIZE_LENGTH_MAX)&&length_num_flag
             DONE   : state <= STATE0; //非常简单的过渡状态，仅用于两处
         endcase
-        
+
 //重要  //～似乎只是对每个wr_done延迟了一个sys_clk
 always@(posedge sys_clk or negedge sys_rst_n)
-    if(!sys_rst_n) 
+    if(!sys_rst_n)
         the1_wr_done <= 1'b0;
     else if(wr_done)
         the1_wr_done <= 1'b1;
     else
         the1_wr_done <= 1'b0;
-        
+
 //设置显示窗口计数器    //设置窗口操作有11bytes数据。
 always@(posedge sys_clk or negedge sys_rst_n)
-    if(!sys_rst_n)  
+    if(!sys_rst_n)
         cnt_set_windows <= 'd0;
     else if(state == STATE1 && the1_wr_done)
         cnt_set_windows <= cnt_set_windows + 1'b1;
@@ -147,7 +146,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else
         state1_finish_flag <= 1'b0;
 
-//状态STATE2跳转到DONE的标志信号        
+//状态STATE2跳转到DONE的标志信号
 assign state2_finish_flag = (
                              (
                                 (!en_size && cnt_length_num == SIZE0_LENGTH_MAX) ||     //选用字体大小为12x6
@@ -155,18 +154,18 @@ assign state2_finish_flag = (
                              ) &&
                              length_num_flag
                             ) ? 1'b1 : 1'b0;
-        
+
 
 
 //rom数据读取的（时序）步骤计数器，==1时开始计算rom_addr，==3时开始取rom数据，==5时en_write_show_char置1
 always@(posedge sys_clk or negedge sys_rst_n)
-    if(!sys_rst_n)  
+    if(!sys_rst_n)
         cnt_rom_prepare <= 'd0;
     else if(length_num_flag)
         cnt_rom_prepare <= 'd0;
     else if(state == STATE2 && cnt_rom_prepare < 'd5) //state2下+1变化，其他保持，出现length_num_flag则清0
         cnt_rom_prepare <= cnt_rom_prepare + 1'b1;
-        
+
 //算出rom数据-当前字模行所在地址
 //  12x6字符rom从0开始，共96个字符，每个字符12行，每行1bytes，1byte中前6bit有效，每bit对应1个点有无（颜色）；
 //而16x8字符rom则从1140开始，也是96个字符，每个字符16行，每行1bytes 8点。注意每点对应颜色数据是16bit格式。
@@ -230,21 +229,21 @@ always@(posedge sys_clk or negedge sys_rst_n)
         length_num_flag <= 1'b0;
     else if(
             !en_size &&
-            state == STATE2 && 
+            state == STATE2 &&
             cnt_wr_color_data == SIZE0_LENGTH_MAX &&  //cnt_wr_c_d本应对应WIDTH，但需要加倍，而LENGTH正好是WIDTH两倍
             the1_wr_done
            )
        length_num_flag <= 1'b1;
    else if(
             en_size &&
-            state == STATE2 && 
+            state == STATE2 &&
             cnt_wr_color_data == SIZE1_LENGTH_MAX &&
             the1_wr_done
            )
        length_num_flag <= 1'b1;
     else
        length_num_flag <= 1'b0;
-        
+
 //字模行计数器（当字模行一行数据处理完成，判断字模行已取完--完则归零计数器，否则加1以便取下一行）
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -257,7 +256,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
         cnt_length_num <= 'd0;
     else if(en_size && cnt_length_num < SIZE1_LENGTH_MAX && length_num_flag)
         cnt_length_num <= cnt_length_num + 1'b1;
-        
+
 //要传输的命令或者数据
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
@@ -288,7 +287,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
         else
             data <= {1'b1,FRONTCOLOR[7:0]};
     else
-        data <= data;   
+        data <= data;
 
 
 //输出端口

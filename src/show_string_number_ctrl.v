@@ -3,18 +3,8 @@
 // Descriptions: 控制展示内容的高层模块
 //----------------------------------------------------------------------------------------
 //****************************************************************************************//
-/*
-在屏幕上显示字符串
-第一行中间显示“pxm hust”共8个字符；
-第二行为空；
-第三行最左边显示“TST6”共4个字符； 
-cnt_ascii_num  0   1   2   3  4   5   6   7   8   9  10   11  
-   char        p   x   m      h   u   s   t   T   S   T   6
- ascii码     112,120,109, 32,104,117,115,116, 84, 83, 84, 54  库内码-32 
-*/
 
-module show_string_number_ctrl
-(
+module show_string_number_ctrl(
     input       wire            sys_clk             ,
     input       wire            sys_rst_n           ,
     input       wire            init_done           ,
@@ -31,9 +21,9 @@ module show_string_number_ctrl
     output      reg             show_char_flag      ,
     output      reg     [6:0]   ascii_num           ,
     output      reg     [8:0]   start_x             ,
-    output      reg     [8:0]   start_y             
+    output      reg     [8:0]   start_y
 );
-//****************** Parameter and Internal Signal *******************//        
+//****************** Parameter and Internal Signal *******************//
 reg     [4:0]   cnt1;            //展示 行 计数器？！？3行故cnt1值只需0，1，2
 //也可能是延迟计数器，init_done为高电平后，延迟3拍，产生show_char_flag高脉冲
 reg     [6:0]   cnt_ascii_num;
@@ -52,7 +42,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
         cnt1 <= cnt1 + 1'b1;
     else
         cnt1 <= cnt1;
-        
+
 always@(posedge sys_clk or negedge sys_rst_n)
     if(!sys_rst_n)
         show_char_flag <= 1'b0;
@@ -142,7 +132,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             20: ascii_num <= 'd45-'d32;  // -
             21: ascii_num <= 'd45-'d32;  // -
             // 空行
-            22: ascii_num <= 'd32-'d32;  // 
+            22: ascii_num <= 'd32-'d32;  //
             // 居中显示20:10:22一共八个字符，高度为20，y坐标为30
             23: ascii_num <= (Status == 5'd1 || Status == 5'd2 || Status == 5'd9) ? 'd95 - 'd32 : decimal_hour_tens+'d16;  // 2
             24: ascii_num <= (Status == 5'd3 || Status == 5'd4 || Status == 5'd10) ? 'd95 - 'd32 : decimal_hour_ones+'d16;  // 0
@@ -153,8 +143,8 @@ always@(posedge sys_clk or negedge sys_rst_n)
             29: ascii_num <= (Status == 5'd13) ? 'd95 - 'd32 :decimal_second_tens+'d16; // 2
             30: ascii_num <= (Status == 5'd14) ? 'd95 - 'd32 :decimal_second_ones+'d16; // 2
             // 空行
-            31: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟 
-            32: ascii_num <= haveAlarmTemp ? 'd84-'d32 : 'd45 - 'd32;  // T有无温度报警 
+            31: ascii_num <= haveAlarm ? 'd67-'d32 : 'd45 - 'd32;  // C有无闹钟
+            32: ascii_num <= haveAlarmTemp ? 'd84-'d32 : 'd45 - 'd32;  // T有无温度报警
             // 居中显示2023/05/21一共十个字符，高度为20，y坐标为78
             33: ascii_num <= 'd50-'d32;  // 2
             34: ascii_num <= 'd48-'d32;  // 0
@@ -172,7 +162,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             45: ascii_num <= 'd105-'d32; // i
             46: ascii_num <= 'd46-'d32;  // .
             // 空行
-            47: ascii_num <= 'd32-'d32;  // 
+            47: ascii_num <= 'd32-'d32;  //
             // y坐标为86处显示一条高度为1的横线
             48: ascii_num <= 'd45-'d32;  // -
             49: ascii_num <= 'd45-'d32;  // -
@@ -304,7 +294,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
             3 : start_y <= 'd0;
             4 : start_y <= 'd0;
             5 : start_y <= 'd0;
-            6 : start_y <= 'd16;  
+            6 : start_y <= 'd16;
             7 : start_y <= 'd16;
             8 : start_y <= 'd16;
             9 : start_y <= 'd16;
@@ -324,8 +314,8 @@ always@(posedge sys_clk or negedge sys_rst_n)
             23 : start_y <= 'd48;
             24 : start_y <= 'd48;
             25 : start_y <= 'd48;
-            26 : start_y <= 'd48;  
-            27 : start_y <= 'd48;  
+            26 : start_y <= 'd48;
+            27 : start_y <= 'd48;
             28: start_y <= 'd48;
             29: start_y <= 'd48;
             30: start_y <= 'd48;
