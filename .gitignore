@@ -1,0 +1,11 @@
+*.pyc
+.tox
+.coverage
+.coverage.*
+build/
+.pytest_cache/
+.idea/
+.vscode/
+cov.xml
+__pycache__/
+*/assets
