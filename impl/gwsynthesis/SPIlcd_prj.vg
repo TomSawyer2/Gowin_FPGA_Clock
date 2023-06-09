@@ -1,7 +1,7 @@
 //
 //Written by GowinSynthesis
 //Product Version "GowinSynthesis V1.9.8.05"
-//Fri Jun 09 09:10:16 2023
+//Fri Jun 09 09:39:02 2023
 
 //Source file index table:
 //file0 "\F:/hardware_design/gowin_fpga_clock/src/Buzzer.v"
@@ -1233,7 +1233,7 @@ module Buzzer (
   xtal_clk_d,
   n123_6,
   shouldTick_4,
-  CP_1Hz_Z,
+  CP_1Hz,
   n25_5,
   n34_3,
   n203_5,
@@ -1256,7 +1256,7 @@ module Buzzer (
 input xtal_clk_d;
 input n123_6;
 input shouldTick_4;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n25_5;
 input n34_3;
 input n203_5;
@@ -1379,7 +1379,7 @@ defparam n128_s2.INIT=8'hE0;
 defparam n76_s1.INIT=4'h4;
   LUT3 n75_s1 (
     .F(n75_5),
-    .I0(CP_1Hz_Z),
+    .I0(CP_1Hz),
     .I1(freq_cnt[0]),
     .I2(freq_cnt[1]) 
 );
@@ -1559,7 +1559,7 @@ defparam freq_data_16_s5.INIT=16'h4100;
   LUT2 n14_s4 (
     .F(n14_9),
     .I0(cnt_500ms),
-    .I1(CP_1Hz_Z) 
+    .I1(CP_1Hz) 
 );
 defparam n14_s4.INIT=4'h8;
   LUT4 n76_s2 (
@@ -1567,7 +1567,7 @@ defparam n14_s4.INIT=4'h8;
     .I0(n76_7),
     .I1(n76_8),
     .I2(n76_9),
-    .I3(CP_1Hz_Z) 
+    .I3(CP_1Hz) 
 );
 defparam n76_s2.INIT=16'h00BF;
   LUT3 n73_s2 (
@@ -1966,11 +1966,11 @@ defparam cnt_500ms_s1.INIT=1'b0;
 endmodule /* Buzzer */
 module Divider (
   xtal_clk_d,
-  CP_1Hz_Z
+  CP_1Hz
 )
 ;
 input xtal_clk_d;
-output CP_1Hz_Z;
+output CP_1Hz;
 wire n60_3;
 wire n35_4;
 wire n35_5;
@@ -2032,7 +2032,7 @@ wire VCC;
 wire GND;
   LUT2 n60_s0 (
     .F(n60_3),
-    .I0(CP_1Hz_Z),
+    .I0(CP_1Hz),
     .I1(n35_4) 
 );
 defparam n60_s0.INIT=4'h6;
@@ -2233,7 +2233,7 @@ defparam n35_s6.INIT=8'h07;
     .RESET(n35_4) 
 );
   DFF CP_1Hz_s0 (
-    .Q(CP_1Hz_Z),
+    .Q(CP_1Hz),
     .D(n60_3),
     .CLK(xtal_clk_d) 
 );
@@ -2465,12 +2465,12 @@ defparam n9_s.ALU_MODE=0;
 );
 endmodule /* Divider */
 module counter10 (
-  CP_1Hz_Z,
+  CP_1Hz,
   n74_4,
   Second
 )
 ;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n74_4;
 output [3:0] Second;
 wire n18_4;
@@ -2503,25 +2503,25 @@ defparam n16_s0.INIT=16'h7F80;
   DFFR Q_2_s0 (
     .Q(Second[2]),
     .D(n17_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .RESET(n74_4) 
 );
   DFFR Q_1_s0 (
     .Q(Second[1]),
     .D(n18_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .RESET(n74_4) 
 );
   DFFR Q_0_s0 (
     .Q(Second[0]),
     .D(n19_6),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .RESET(n74_4) 
 );
   DFFR Q_3_s0 (
     .Q(Second[3]),
     .D(n16_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .RESET(n74_4) 
 );
   INV n19_s2 (
@@ -2536,13 +2536,13 @@ defparam n16_s0.INIT=16'h7F80;
 );
 endmodule /* counter10 */
 module counter6 (
-  CP_1Hz_Z,
+  CP_1Hz,
   n74_4,
   n22_4,
   Second
 )
 ;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n74_4;
 output n22_4;
 output [7:4] Second;
@@ -2591,28 +2591,28 @@ defparam n22_s2.INIT=4'h4;
   DFFRE Q_2_s0 (
     .Q(Second[6]),
     .D(n18_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(n74_4),
     .RESET(n22_4) 
 );
   DFFRE Q_1_s0 (
     .Q(Second[5]),
     .D(n19_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(n74_4),
     .RESET(n22_4) 
 );
   DFFRE Q_0_s0 (
     .Q(Second[4]),
     .D(n20_6),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(n74_4),
     .RESET(n22_4) 
 );
   DFFRE Q_3_s0 (
     .Q(Second[7]),
     .D(n17_4),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(n74_4),
     .RESET(n22_4) 
 );
@@ -2628,7 +2628,7 @@ defparam n22_s2.INIT=4'h4;
 );
 endmodule /* counter6 */
 module counter10_0 (
-  CP_1Hz_Z,
+  CP_1Hz,
   n22_4,
   newMinute,
   Status,
@@ -2636,7 +2636,7 @@ module counter10_0 (
   Minute
 )
 ;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n22_4;
 input [3:0] newMinute;
 input [3:0] Status;
@@ -2729,28 +2729,28 @@ defparam Q_2_s4.INIT=4'hE;
   DFFE Q_2_s1 (
     .Q(Minute[2]),
     .D(n25_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_7) 
 );
 defparam Q_2_s1.INIT=1'b0;
   DFFE Q_1_s1 (
     .Q(Minute[1]),
     .D(n26_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_7) 
 );
 defparam Q_1_s1.INIT=1'b0;
   DFFE Q_3_s1 (
     .Q(Minute[3]),
     .D(n24_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_7) 
 );
 defparam Q_3_s1.INIT=1'b0;
   DFF Q_0_s3 (
     .Q(Minute[0]),
     .D(n27_6),
-    .CLK(CP_1Hz_Z) 
+    .CLK(CP_1Hz) 
 );
 defparam Q_0_s3.INIT=1'b0;
   VCC VCC_cZ (
@@ -2761,7 +2761,7 @@ defparam Q_0_s3.INIT=1'b0;
 );
 endmodule /* counter10_0 */
 module counter6_0 (
-  CP_1Hz_Z,
+  CP_1Hz,
   n26_4,
   n22_4,
   newMinute,
@@ -2769,7 +2769,7 @@ module counter6_0 (
   Minute
 )
 ;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n26_4;
 input n22_4;
 input [7:4] newMinute;
@@ -2856,28 +2856,28 @@ defparam n25_s4.INIT=16'h0400;
   DFFE Q_2_s1 (
     .Q(Minute[6]),
     .D(n26_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_5) 
 );
 defparam Q_2_s1.INIT=1'b0;
   DFFE Q_1_s1 (
     .Q(Minute[5]),
     .D(n27_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_5) 
 );
 defparam Q_1_s1.INIT=1'b0;
   DFFE Q_0_s1 (
     .Q(Minute[4]),
     .D(n28_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_5) 
 );
 defparam Q_0_s1.INIT=1'b0;
   DFFE Q_3_s1 (
     .Q(Minute[7]),
     .D(n25_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(Q_2_5) 
 );
 defparam Q_3_s1.INIT=1'b0;
@@ -2889,7 +2889,7 @@ defparam Q_3_s1.INIT=1'b0;
 );
 endmodule /* counter6_0 */
 module counter24 (
-  CP_1Hz_Z,
+  CP_1Hz,
   n22_4,
   n26_4,
   newHour_3_7,
@@ -2902,7 +2902,7 @@ module counter24 (
   Hour
 )
 ;
-input CP_1Hz_Z;
+input CP_1Hz;
 input n22_4;
 input n26_4;
 input newHour_3_7;
@@ -3143,49 +3143,49 @@ defparam n78_s7.INIT=16'h0800;
   DFFE cntL_2_s0 (
     .Q(Hour[2]),
     .D(n79_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntL_2_5) 
 );
   DFFE cntL_1_s0 (
     .Q(Hour[1]),
     .D(n80_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntL_2_5) 
 );
   DFFE cntL_0_s0 (
     .Q(Hour[0]),
     .D(n81_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntL_2_5) 
 );
   DFFE cntL_3_s0 (
     .Q(Hour[3]),
     .D(n78_3),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntL_2_5) 
 );
   DFFE cntH_3_s1 (
     .Q(Hour[7]),
     .D(n94_5),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntH_1_4) 
 );
   DFFE cntH_2_s1 (
     .Q(Hour[6]),
     .D(n95_5),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntH_1_4) 
 );
   DFFE cntH_1_s1 (
     .Q(Hour[5]),
     .D(n96_5),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntH_1_4) 
 );
   DFFE cntH_0_s1 (
     .Q(Hour[4]),
     .D(n97_5),
-    .CLK(CP_1Hz_Z),
+    .CLK(CP_1Hz),
     .CE(cntH_1_4) 
 );
   ALU n9_s0 (
@@ -6613,7 +6613,7 @@ module lcd_init (
   \state.S2_WR_0X11 ,
   \state.S4_WR_INITC ,
   \state.S5_WR_FULLSCR ,
-  init_data_Z
+  init_data
 )
 ;
 input xtal_clk_d;
@@ -6624,7 +6624,7 @@ output \state.DONE ;
 output \state.S2_WR_0X11 ;
 output \state.S4_WR_INITC ;
 output \state.S5_WR_FULLSCR ;
-output [8:0] init_data_Z;
+output [8:0] init_data;
 wire n14_3;
 wire n166_3;
 wire n219_3;
@@ -8755,55 +8755,55 @@ defparam n60_s11.INIT=16'hA0EC;
     .CLEAR(n123_6) 
 );
   DFFP init_data_8_s0 (
-    .Q(init_data_Z[8]),
+    .Q(init_data[8]),
     .D(n317_5),
     .CLK(xtal_clk_d),
     .PRESET(n123_6) 
 );
   DFFC init_data_7_s0 (
-    .Q(init_data_Z[7]),
+    .Q(init_data[7]),
     .D(n318_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_6_s0 (
-    .Q(init_data_Z[6]),
+    .Q(init_data[6]),
     .D(n319_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_5_s0 (
-    .Q(init_data_Z[5]),
+    .Q(init_data[5]),
     .D(n320_18),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_4_s0 (
-    .Q(init_data_Z[4]),
+    .Q(init_data[4]),
     .D(n321_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_3_s0 (
-    .Q(init_data_Z[3]),
+    .Q(init_data[3]),
     .D(n322_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_2_s0 (
-    .Q(init_data_Z[2]),
+    .Q(init_data[2]),
     .D(n323_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_1_s0 (
-    .Q(init_data_Z[1]),
+    .Q(init_data[1]),
     .D(n324_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC init_data_0_s0 (
-    .Q(init_data_Z[0]),
+    .Q(init_data[0]),
     .D(n325_5),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
@@ -9068,11 +9068,11 @@ module muxcontrol (
   \state.S5_WR_FULLSCR ,
   \state.S2_WR_0X11 ,
   show_char_data,
-  init_data_Z,
+  init_data,
   cnt_rom_prepare,
-  en_write_Z,
+  en_write,
   lcd_dc_d,
-  data_Z
+  data
 )
 ;
 input xtal_clk_d;
@@ -9083,11 +9083,11 @@ input \state.S4_WR_INITC ;
 input \state.S5_WR_FULLSCR ;
 input \state.S2_WR_0X11 ;
 input [8:0] show_char_data;
-input [8:0] init_data_Z;
+input [8:0] init_data;
 input [2:0] cnt_rom_prepare;
-output en_write_Z;
+output en_write;
 output lcd_dc_d;
-output [7:0] data_Z;
+output [7:0] data;
 wire n18_3;
 wire n19_3;
 wire n20_3;
@@ -9105,62 +9105,62 @@ wire GND;
   LUT3 n18_s0 (
     .F(n18_3),
     .I0(show_char_data[8]),
-    .I1(init_data_Z[8]),
+    .I1(init_data[8]),
     .I2(\state.DONE ) 
 );
 defparam n18_s0.INIT=8'hAC;
   LUT3 n19_s0 (
     .F(n19_3),
-    .I0(init_data_Z[7]),
+    .I0(init_data[7]),
     .I1(show_char_data[7]),
     .I2(\state.DONE ) 
 );
 defparam n19_s0.INIT=8'hCA;
   LUT3 n20_s0 (
     .F(n20_3),
-    .I0(init_data_Z[6]),
+    .I0(init_data[6]),
     .I1(show_char_data[6]),
     .I2(\state.DONE ) 
 );
 defparam n20_s0.INIT=8'hCA;
   LUT3 n21_s0 (
     .F(n21_3),
-    .I0(init_data_Z[5]),
+    .I0(init_data[5]),
     .I1(show_char_data[5]),
     .I2(\state.DONE ) 
 );
 defparam n21_s0.INIT=8'hCA;
   LUT3 n22_s0 (
     .F(n22_3),
-    .I0(init_data_Z[4]),
+    .I0(init_data[4]),
     .I1(show_char_data[4]),
     .I2(\state.DONE ) 
 );
 defparam n22_s0.INIT=8'hCA;
   LUT3 n23_s0 (
     .F(n23_3),
-    .I0(init_data_Z[3]),
+    .I0(init_data[3]),
     .I1(show_char_data[3]),
     .I2(\state.DONE ) 
 );
 defparam n23_s0.INIT=8'hCA;
   LUT3 n24_s0 (
     .F(n24_3),
-    .I0(init_data_Z[2]),
+    .I0(init_data[2]),
     .I1(show_char_data[2]),
     .I2(\state.DONE ) 
 );
 defparam n24_s0.INIT=8'hCA;
   LUT3 n25_s0 (
     .F(n25_3),
-    .I0(init_data_Z[1]),
+    .I0(init_data[1]),
     .I1(show_char_data[1]),
     .I2(\state.DONE ) 
 );
 defparam n25_s0.INIT=8'hCA;
   LUT3 n26_s0 (
     .F(n26_3),
-    .I0(init_data_Z[0]),
+    .I0(init_data[0]),
     .I1(show_char_data[0]),
     .I2(\state.DONE ) 
 );
@@ -9188,55 +9188,55 @@ defparam n42_s1.INIT=16'h00BF;
 );
 defparam n42_s2.INIT=8'h01;
   DFFC data_7_s0 (
-    .Q(data_Z[7]),
+    .Q(data[7]),
     .D(n19_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_6_s0 (
-    .Q(data_Z[6]),
+    .Q(data[6]),
     .D(n20_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_5_s0 (
-    .Q(data_Z[5]),
+    .Q(data[5]),
     .D(n21_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_4_s0 (
-    .Q(data_Z[4]),
+    .Q(data[4]),
     .D(n22_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_3_s0 (
-    .Q(data_Z[3]),
+    .Q(data[3]),
     .D(n23_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_2_s0 (
-    .Q(data_Z[2]),
+    .Q(data[2]),
     .D(n24_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_1_s0 (
-    .Q(data_Z[1]),
+    .Q(data[1]),
     .D(n25_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC data_0_s0 (
-    .Q(data_Z[0]),
+    .Q(data[0]),
     .D(n26_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
 );
   DFFC en_write_s0 (
-    .Q(en_write_Z),
+    .Q(en_write),
     .D(n42_3),
     .CLK(xtal_clk_d),
     .CLEAR(n123_6) 
@@ -9257,8 +9257,8 @@ endmodule /* muxcontrol */
 module lcd_write (
   xtal_clk_d,
   n123_6,
-  en_write_Z,
-  data_Z,
+  en_write,
+  data,
   wr_done,
   lcd_mosi_d,
   lcd_sclk_d,
@@ -9267,8 +9267,8 @@ module lcd_write (
 ;
 input xtal_clk_d;
 input n123_6;
-input en_write_Z;
-input [7:0] data_Z;
+input en_write;
+input [7:0] data;
 output wr_done;
 output lcd_mosi_d;
 output lcd_sclk_d;
@@ -9357,12 +9357,12 @@ defparam mosi_s3.INIT=16'hFFF8;
   LUT2 n23_s9 (
     .F(n23_15),
     .I0(\state.STATE0 ),
-    .I1(en_write_Z) 
+    .I1(en_write) 
 );
 defparam n23_s9.INIT=4'h8;
   LUT4 n181_s2 (
     .F(n181_6),
-    .I0(data_Z[7]),
+    .I0(data[7]),
     .I1(n181_7),
     .I2(\state.STATE0 ),
     .I3(n147_3) 
@@ -9435,7 +9435,7 @@ defparam n26_s1.INIT=4'h8;
   LUT2 \state.STATE0_s3  (
     .F(\state.STATE0_8 ),
     .I0(\state.DONE ),
-    .I1(en_write_Z) 
+    .I1(en_write) 
 );
 defparam \state.STATE0_s3 .INIT=4'hE;
   LUT2 n129_s1 (
@@ -9468,8 +9468,8 @@ defparam n181_s3.INIT=8'h3A;
 defparam n181_s4.INIT=8'hC5;
   LUT4 n181_s5 (
     .F(n181_9),
-    .I0(data_Z[3]),
-    .I1(data_Z[5]),
+    .I0(data[3]),
+    .I1(data[5]),
     .I2(cnt1[1]),
     .I3(n181_11) 
 );
@@ -9477,23 +9477,23 @@ defparam n181_s5.INIT=16'hAFC0;
   LUT4 n181_s6 (
     .F(n181_10),
     .I0(cnt1[2]),
-    .I1(data_Z[1]),
+    .I1(data[1]),
     .I2(n181_12),
     .I3(cnt1[1]) 
 );
 defparam n181_s6.INIT=16'hBB0F;
   LUT4 n181_s7 (
     .F(n181_11),
-    .I0(data_Z[4]),
-    .I1(data_Z[6]),
+    .I0(data[4]),
+    .I1(data[6]),
     .I2(cnt1[1]),
     .I3(cnt1[2]) 
 );
 defparam n181_s7.INIT=16'hFA0C;
   LUT3 n181_s8 (
     .F(n181_12),
-    .I0(data_Z[2]),
-    .I1(data_Z[0]),
+    .I0(data[2]),
+    .I1(data[0]),
     .I2(cnt1[2]) 
 );
 defparam n181_s8.INIT=8'hCA;
@@ -9540,7 +9540,7 @@ defparam n137_s5.INIT=8'h12;
     .I0(cnt_delay[0]),
     .I1(cnt_delay[1]),
     .I2(\state.STATE0 ),
-    .I3(en_write_Z) 
+    .I3(en_write) 
 );
 defparam \state.STATE1_s6 .INIT=16'hF888;
   DFFC \state.DONE_s0  (
@@ -9716,7 +9716,7 @@ module show_string_number_ctrl (
   n225_199,
   n227_194,
   n226_205,
-  ascii_num,
+  ascii_num_Z,
   start_x,
   start_y
 )
@@ -9744,7 +9744,7 @@ output n225_198;
 output n225_199;
 output n227_194;
 output n226_205;
-output [6:0] ascii_num;
+output [6:0] ascii_num_Z;
 output [6:1] start_x;
 output [7:4] start_y;
 wire n36_3;
@@ -11641,49 +11641,49 @@ defparam n41_s1.INIT=4'h8;
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_6_s0 (
-    .Q(ascii_num[6]),
+    .Q(ascii_num_Z[6]),
     .D(n222_165),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_5_s0 (
-    .Q(ascii_num[5]),
+    .Q(ascii_num_Z[5]),
     .D(n223_175),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_4_s0 (
-    .Q(ascii_num[4]),
+    .Q(ascii_num_Z[4]),
     .D(n224_183),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_3_s0 (
-    .Q(ascii_num[3]),
+    .Q(ascii_num_Z[3]),
     .D(n225_182),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_2_s0 (
-    .Q(ascii_num[2]),
+    .Q(ascii_num_Z[2]),
     .D(n226_182),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_1_s0 (
-    .Q(ascii_num[1]),
+    .Q(ascii_num_Z[1]),
     .D(n227_184),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
     .CLEAR(n123_6) 
 );
   DFFCE ascii_num_0_s0 (
-    .Q(ascii_num[0]),
+    .Q(ascii_num_Z[0]),
     .D(n228_182),
     .CLK(xtal_clk_d),
     .CE(\state.DONE ),
@@ -11992,7 +11992,7 @@ module lcd_show_char (
   n123_6,
   wr_done,
   show_char_flag,
-  ascii_num,
+  ascii_num_Z,
   start_y,
   start_x,
   \state.DONE ,
@@ -12005,7 +12005,7 @@ input xtal_clk_d;
 input n123_6;
 input wr_done;
 input show_char_flag;
-input [6:0] ascii_num;
+input [6:0] ascii_num_Z;
 input [7:4] start_y;
 input [6:1] start_x;
 output \state.DONE ;
@@ -12278,23 +12278,23 @@ defparam temp_7_s3.INIT=8'hF4;
 defparam n80_s9.INIT=4'h8;
   LUT4 n189_s3 (
     .F(n189_8),
-    .I0(ascii_num[2]),
-    .I1(ascii_num[1]),
-    .I2(ascii_num[0]),
-    .I3(ascii_num[3]) 
+    .I0(ascii_num_Z[2]),
+    .I1(ascii_num_Z[1]),
+    .I2(ascii_num_Z[0]),
+    .I3(ascii_num_Z[3]) 
 );
 defparam n189_s3.INIT=16'h01FE;
   LUT2 n188_s3 (
     .F(n188_8),
-    .I0(ascii_num[4]),
+    .I0(ascii_num_Z[4]),
     .I1(n188_9) 
 );
 defparam n188_s3.INIT=4'h6;
   LUT3 n187_s3 (
     .F(n187_8),
-    .I0(ascii_num[4]),
+    .I0(ascii_num_Z[4]),
     .I1(n188_9),
-    .I2(ascii_num[5]) 
+    .I2(ascii_num_Z[5]) 
 );
 defparam n187_s3.INIT=8'h78;
   LUT3 n465_s1 (
@@ -12372,31 +12372,31 @@ defparam n144_s1.INIT=8'h14;
 defparam n143_s1.INIT=16'h0708;
   LUT4 n186_s4 (
     .F(n186_10),
-    .I0(ascii_num[5]),
-    .I1(ascii_num[4]),
+    .I0(ascii_num_Z[5]),
+    .I1(ascii_num_Z[4]),
     .I2(n188_9),
-    .I3(ascii_num[6]) 
+    .I3(ascii_num_Z[6]) 
 );
 defparam n186_s4.INIT=16'hFF80;
   LUT2 n191_s4 (
     .F(n191_10),
-    .I0(ascii_num[1]),
-    .I1(ascii_num[0]) 
+    .I0(ascii_num_Z[1]),
+    .I1(ascii_num_Z[0]) 
 );
 defparam n191_s4.INIT=4'h9;
   LUT3 n190_s4 (
     .F(n190_10),
-    .I0(ascii_num[1]),
-    .I1(ascii_num[0]),
-    .I2(ascii_num[2]) 
+    .I0(ascii_num_Z[1]),
+    .I1(ascii_num_Z[0]),
+    .I2(ascii_num_Z[2]) 
 );
 defparam n190_s4.INIT=8'hE1;
   LUT4 n186_s5 (
     .F(n186_12),
-    .I0(ascii_num[4]),
-    .I1(ascii_num[5]),
+    .I0(ascii_num_Z[4]),
+    .I1(ascii_num_Z[5]),
     .I2(n188_9),
-    .I3(ascii_num[6]) 
+    .I3(ascii_num_Z[6]) 
 );
 defparam n186_s5.INIT=16'h807F;
   LUT2 \state.STATE0_s3  (
@@ -12535,10 +12535,10 @@ defparam cnt_rom_prepare_2_s4.INIT=4'h1;
 defparam temp_7_s4.INIT=16'h8000;
   LUT4 n188_s4 (
     .F(n188_9),
-    .I0(ascii_num[2]),
-    .I1(ascii_num[1]),
-    .I2(ascii_num[0]),
-    .I3(ascii_num[3]) 
+    .I0(ascii_num_Z[2]),
+    .I1(ascii_num_Z[1]),
+    .I2(ascii_num_Z[0]),
+    .I3(ascii_num_Z[3]) 
 );
 defparam n188_s4.INIT=16'hFE00;
   LUT4 n463_s2 (
@@ -13311,7 +13311,7 @@ defparam n195_s.ALU_MODE=0;
 defparam n194_s.ALU_MODE=0;
   INV n192_s5 (
     .O(n192_10),
-    .I(ascii_num[0]) 
+    .I(ascii_num_Z[0]) 
 );
   INV n203_s2 (
     .O(n203_6),
@@ -13397,7 +13397,7 @@ wire dht11_10;
 wire Value_en;
 wire n123_6;
 wire BUZZER_2;
-wire CP_1Hz_Z;
+wire CP_1Hz;
 wire n22_4;
 wire n26_4;
 wire n12_5;
@@ -13418,7 +13418,7 @@ wire \state.DONE ;
 wire \state.S2_WR_0X11 ;
 wire \state.S4_WR_INITC ;
 wire \state.S5_WR_FULLSCR ;
-wire en_write_Z;
+wire en_write;
 wire lcd_dc_d;
 wire wr_done;
 wire lcd_mosi_d;
@@ -13447,9 +13447,9 @@ wire [7:0] newHour;
 wire [7:0] newMinute;
 wire [7:0] alarmTemp;
 wire [15:0] TempHumi;
-wire [8:0] init_data_Z;
-wire [7:0] data_Z;
-wire [6:0] ascii_num;
+wire [8:0] init_data;
+wire [7:0] data;
+wire [6:0] ascii_num_Z;
 wire [6:1] start_x;
 wire [7:4] start_y;
 wire [2:0] cnt_rom_prepare;
@@ -13699,7 +13699,7 @@ defparam n34_s0.ALU_MODE=3;
     .xtal_clk_d(xtal_clk_d),
     .n123_6(n123_6),
     .shouldTick_4(shouldTick_4),
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n25_5(n25_5),
     .n34_3(n34_3),
     .n203_5(n203_5),
@@ -13720,21 +13720,21 @@ defparam n34_s0.ALU_MODE=3;
 );
   Divider U0 (
     .xtal_clk_d(xtal_clk_d),
-    .CP_1Hz_Z(CP_1Hz_Z)
+    .CP_1Hz(CP_1Hz)
 );
   counter10 S0 (
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n74_4(n74_4),
     .Second(Second[3:0])
 );
   counter6 S1 (
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n74_4(n74_4),
     .n22_4(n22_4),
     .Second(Second_7[7:4])
 );
   counter10_0 M0 (
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n22_4(n22_4),
     .newMinute(newMinute[3:0]),
     .Status(Status[3:0]),
@@ -13742,7 +13742,7 @@ defparam n34_s0.ALU_MODE=3;
     .Minute(Minute[3:0])
 );
   counter6_0 M1 (
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n26_4(n26_4),
     .n22_4(n22_4),
     .newMinute(newMinute[7:4]),
@@ -13750,7 +13750,7 @@ defparam n34_s0.ALU_MODE=3;
     .Minute(Minute_7[7:4])
 );
   counter24 H0 (
-    .CP_1Hz_Z(CP_1Hz_Z),
+    .CP_1Hz(CP_1Hz),
     .n22_4(n22_4),
     .n26_4(n26_4),
     .newHour_3_7(newHour_3_7),
@@ -13806,7 +13806,7 @@ defparam n34_s0.ALU_MODE=3;
     .\state.S2_WR_0X11 (\state.S2_WR_0X11 ),
     .\state.S4_WR_INITC (\state.S4_WR_INITC ),
     .\state.S5_WR_FULLSCR (\state.S5_WR_FULLSCR ),
-    .init_data_Z(init_data_Z[8:0])
+    .init_data(init_data[8:0])
 );
   muxcontrol muxcontrol_inst (
     .xtal_clk_d(xtal_clk_d),
@@ -13817,17 +13817,17 @@ defparam n34_s0.ALU_MODE=3;
     .\state.S5_WR_FULLSCR (\state.S5_WR_FULLSCR ),
     .\state.S2_WR_0X11 (\state.S2_WR_0X11 ),
     .show_char_data(show_char_data[8:0]),
-    .init_data_Z(init_data_Z[8:0]),
+    .init_data(init_data[8:0]),
     .cnt_rom_prepare(cnt_rom_prepare[2:0]),
-    .en_write_Z(en_write_Z),
+    .en_write(en_write),
     .lcd_dc_d(lcd_dc_d),
-    .data_Z(data_Z[7:0])
+    .data(data[7:0])
 );
   lcd_write lcd_write_inst (
     .xtal_clk_d(xtal_clk_d),
     .n123_6(n123_6),
-    .en_write_Z(en_write_Z),
-    .data_Z(data_Z[7:0]),
+    .en_write(en_write),
+    .data(data[7:0]),
     .wr_done(wr_done),
     .lcd_mosi_d(lcd_mosi_d),
     .lcd_sclk_d(lcd_sclk_d),
@@ -13857,7 +13857,7 @@ defparam n34_s0.ALU_MODE=3;
     .n225_199(n225_199),
     .n227_194(n227_194),
     .n226_205(n226_205),
-    .ascii_num(ascii_num[6:0]),
+    .ascii_num_Z(ascii_num_Z[6:0]),
     .start_x(start_x[6:1]),
     .start_y(start_y[7:4])
 );
@@ -13866,7 +13866,7 @@ defparam n34_s0.ALU_MODE=3;
     .n123_6(n123_6),
     .wr_done(wr_done),
     .show_char_flag(show_char_flag),
-    .ascii_num(ascii_num[6:0]),
+    .ascii_num_Z(ascii_num_Z[6:0]),
     .start_y(start_y[7:4]),
     .start_x(start_x[6:1]),
     .\state.DONE (\state.DONE_6 ),
