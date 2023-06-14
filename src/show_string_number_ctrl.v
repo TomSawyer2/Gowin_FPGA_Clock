@@ -154,8 +154,8 @@ always@(posedge sys_clk or negedge sys_rst_n)
             38: ascii_num <= 'd48-'d32;  // 0
             39: ascii_num <= 'd54-'d32;  // 6
             40: ascii_num <= 'd47-'d32;  // /
-            41: ascii_num <= 'd48-'d32;  // 0
-            42: ascii_num <= 'd57-'d32;  // 9
+            41: ascii_num <= 'd49-'d32;  // 1
+            42: ascii_num <= 'd54-'d32;  // 6
             // 居中显示Mon.这四个字符，高度为20，y坐标为102
             43: ascii_num <= 'd70-'d32;  // F
             44: ascii_num <= 'd114-'d32; // r
